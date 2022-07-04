@@ -17,11 +17,13 @@
 	
 	second test - juliaChoi
 	
-<<<<<<< HEAD
+
 	third test - juliaChoi
-=======
+
 	sunho third test. check please.
->>>>>>> refs/heads/master
+	
+	fourth test -juliaChoi
+
 </h1>
 
 <P>  The time on the server is ${serverTime}. </P>
