@@ -9,17 +9,6 @@
 <body>
 <h1>
 	Hello world!  
-	
-	sunho first test.
-	sunho second test!
-
-	first test -juliaChoi 
-	
-	second test - juliaChoi
-	
-	sunho third test. check please.
-	
-	testtesttest
 </h1>
 
 <P>  The time on the server is ${serverTime}. </P>
