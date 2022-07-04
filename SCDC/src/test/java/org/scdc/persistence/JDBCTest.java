@@ -1,0 +1,29 @@
+package org.scdc.persistence;
+
+import static org.junit.Assert.fail;
+
+import java.sql.DriverManager;
+
+import org.junit.Test;
+
+import lombok.extern.log4j.Log4j;
+
+@Log4j
+public class JDBCTest {
+
+	
+	@Test
+	public void testConnection() {
+		try {
+		Class.forName("oracle.jdbc.driver.OracleDriver");//?뱶?씪?씠踰꾨줈?뵫
+		DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE",
+				"book_ex", "book_ex");
+		log.info("JDBC 연결성공");
+		}catch(Exception e) {
+			e.printStackTrace();
+			fail("연결실패");
+
+			//fail(e.getMessage());
+		}
+	}//testConnection
+}
