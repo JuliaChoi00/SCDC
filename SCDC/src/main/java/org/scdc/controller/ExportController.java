@@ -8,13 +8,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import lombok.extern.log4j.Log4j;
 
 @Controller
-@RequestMapping("/export/*")
+@RequestMapping("/*")
 @Log4j
 public class ExportController {
-	@RequestMapping("/login")
-	public void login() {
-		log.info("login");
-//		model.addAttribute("")
-		
+	
+	@RequestMapping("/exportPart")
+	public void exportPart() {
+		log.info("exportPart");
+	}
+
+	@RequestMapping("/doExportPart")
+	public void doExportPart() {
+		log.info("doExportPart");
 	}
 }
