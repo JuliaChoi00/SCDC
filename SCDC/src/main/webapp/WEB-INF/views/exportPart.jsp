@@ -20,9 +20,6 @@
 		}	
 	</style>
 </head>
-<%@ include file="../views/includes/nav.jsp"%>	
-
-
 
 <body>
 		<div class="panel-head">

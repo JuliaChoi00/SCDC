@@ -8,7 +8,6 @@ import lombok.Data;
 public class ExportVO {
 	private long Export_No;
 	private Date Export_Date;
-	private Date updatedate;
 	private long ExportQuantity;
 	private long PartCode;
 	

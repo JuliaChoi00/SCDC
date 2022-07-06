@@ -22,10 +22,4 @@ public class ExportController {
 		log.info("doExportPart");
 	}
 	
-	@RequestMapping("/login")
-	public void login() {
-		log.info("login");
-//		model.addAttribute("")
-
-	}
 }

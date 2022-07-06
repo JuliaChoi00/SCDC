@@ -8,8 +8,6 @@
 <script src="//code.jquery.com/jquery.min.js"></script>
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 
-<%@ include file="../views/includes/nav.jsp"%>
-
 
 <body>
 	<div id="wrapper">
