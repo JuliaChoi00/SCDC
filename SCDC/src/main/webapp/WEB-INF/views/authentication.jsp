@@ -23,6 +23,7 @@
         }
     }
     response.sendRedirect(redirectUrl);
+    //완료
 %>
 </body>
 </html>
