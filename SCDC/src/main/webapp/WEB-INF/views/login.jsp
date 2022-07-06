@@ -32,7 +32,7 @@
 
 	</c:when>
 	<c:otherwise>
-	<form action="page2" id="loginCheck" method="post" >
+	<form action="authentication" id="loginCheck" method="post" >
 	<table class="form-signin">
 		
 		<tr>
@@ -42,12 +42,12 @@
 		</tr>
 		<tr>
 			<td>
-			<input type="text" class="form-control" id ="userCd" name="userCd" placeholder="아이디를 입력해주세요">
+			<input type="text" class="form-control" id ="userCd" name="userId" placeholder="아이디를 입력해주세요">
 			</td>
 		</tr>
 		<tr>
 			<td>
-			<input type="password" class="form-control" id ="userPs" name="userPs" placeholder="비밀번호를 입력해주세요">
+			<input type="password" class="form-control" id ="userPs" name="userPw" placeholder="비밀번호를 입력해주세요">
 			</td>
 		</tr>
 		<tr>
