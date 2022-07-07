@@ -9,12 +9,12 @@
 <script src="//code.jquery.com/jquery.min.js"></script>
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 
+
 <body>
 	<div id="wrapper">
-		<%@ include file="../views/includes/nav.jsp"%>
 		<div id="page-wrapper" style="min-height: 868px;">
-			<div class="row"><span style="display: inline-block; width: 50%; margin-right: 2%;">
-				제품 <select name="job">
+			<div class="row"><span style="display: inline-block; width: 45%; margin-right: 2%;">
+				생산품 <select name="job">
    	<option value=""></option>
     <option value="냉장고">냉장고</option>
     <option value="선풍기">선풍기</option>
@@ -169,6 +169,8 @@
              
             
               
+                            </table></div>
+                             
                              <c:if test="${pageMaker.prev}">
                             <a href="/board/list?pageNum=${pageMaker.startPage-1}&&amount=${pageMaker.cri.amount}"> prev </a>  &nbsp;&nbsp;&nbsp;&nbsp;
                             </c:if>
@@ -203,11 +205,8 @@
    </form> 
                             
                             
-                            </div>
+                            </div>		
 		
-		
-
-
 		<!-- jQuery -->
 		
 
