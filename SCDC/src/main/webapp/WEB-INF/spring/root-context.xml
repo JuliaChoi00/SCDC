@@ -17,13 +17,13 @@
 	<!-- 케넥트 풀 설정 -->
 	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
 		<property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"></property>
-		<property name="jdbcUrl" value="jdbc:log4jdbc:oracle:thin:@localhost:1521:XE"></property>
+		<property name="jdbcUrl" value="jdbc:log4jdbc:oracle:thin:@192.168.0.30:1521:XE"></property>
 	
 <!-- 	<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"></property>
 		<property name="jdbcUrl" value="jdbc:oracle:thin:@localhost:1521:XE"></property>   -->
 		
-		<property name="username" value="book_ex"></property>
-		<property name="password" value="book_ex"></property>
+		<property name="username" value="scdc"></property>
+		<property name="password" value="1234"></property>
 	</bean>
 	
 	<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource">
@@ -38,6 +38,8 @@
 	
 	<mybatis-spring:scan base-package="org.zerock.mapper" />
 	<context:component-scan base-package="org.zerock.service" />
+	<context:component-scan base-package="org.scdc.service" />
+	<context:component-scan base-package="org.scdc.dao" />
 		
 </beans>
 
