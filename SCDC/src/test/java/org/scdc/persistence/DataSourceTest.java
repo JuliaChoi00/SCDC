@@ -23,7 +23,7 @@ public class DataSourceTest {
 	public void testConnection() {
 		try {
 			Connection conn = dataSource.getConnection();
-			log.info("¿¬°á¼º°ø");
+			log.info("ì—°ê²°ì„±ê³µ");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
