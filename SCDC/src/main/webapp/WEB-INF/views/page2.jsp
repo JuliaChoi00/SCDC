@@ -114,7 +114,8 @@
                             <c:if test="${pageMaker.next}">
                             	<a href="/board/list?pageNum=${pageMaker.endPage+1}&&amount=${pageMaker.cri.amount}"> next </a>
                             </c:if>
-     &nbsp;&nbsp;&nbsp;&nbsp;                        
+     &nbsp;&nbsp;&nbsp;&nbsp;   
+                         
    <form action="/page" method="get">                        
    <select name="type">
     <option >검색조건</option>
