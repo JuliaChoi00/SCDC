@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../views/includes/header.jsp"%>
+
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
@@ -19,7 +20,7 @@
     <option value="선풍기">선풍기</option>
     <option value="공기청정기">공기청정기</option>
 	</select>
-	
+	&nbsp;&nbsp;&nbsp;&nbsp;
 	<input class="datepicker">
 	
 	<script>
@@ -48,8 +49,15 @@
        //초기값을 오늘 날짜로 설정해줘야 합니다.
        $('.datepicker').datepicker('setDate', 'today'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)            
    });
-</script>			
-				<div class="col-sm-12"><table width="100%" class="table table-striped table-bordered table-hover dataTable no-footer dtr-inline" id="dataTables-example" role="grid" aria-describedby="dataTables-example_info" style="width: 200%;">
+</script> 			
+		&nbsp;&nbsp;&nbsp;&nbsp;		
+	<!-- 링크가 파일이름이 되기 때문에 엑셀파일의 확장자를
+	뒤에 붙이는 것이 좋습니다-->
+	<a href="excel.xls">엑셀파일 만들기</a> &nbsp;&nbsp;&nbsp;&nbsp;
+	<!-- 엑셀 파일을 읽어서 출력하는 요청 -->
+    <a href="excelread.do">엑셀파일 읽기</a><br/>			
+				
+				<div class="col-sm-12"><table width="100%" class="table table-striped table-bordered table-hover dataTable no-footer dtr-inline" id="ascending" role="grid" aria-describedby="dataTables-example_info" style="width: 200%;">
                                 <thead>
          <tr role="row">
 	         <th class="sorting_asc" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 168px;">품목코드</th>
@@ -62,99 +70,105 @@
 	         <th class="sorting_asc" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 168px;">품목설명</th>
         </tr>
                                 </thead>
+
                                 <tbody>
            
                                 <tr class="gradeA odd" role="row">
-                                        <td class="sorting_1">Gecko</td>
+                                        <td class="sorting_1">1001</td>
                                         <td>Firefox 1.0</td>
                                         <td>Win 98+ / OSX.2+</td>
-                                        <td class="center">1.7</td>
+                                        <td class="center">1.1</td>
                                         <td class="center">A</td>
-                                        <td class="center">1.7</td>
-                                        <td class="center">1.7</td>
-                                        <td class="center">1.7</td>
+                                        <td class="center">1.1</td>
+                                        <td class="center">1.1</td>
+                                        <td class="center">1.1</td>
                                     </tr><tr class="gradeA even" role="row">
-                                        <td class="sorting_1">Gecko</td>
+                                        <td class="sorting_1">1002</td>
                                         <td>Firefox 1.5</td>
                                         <td>Win 98+ / OSX.2+</td>
-                                        <td class="center">1.8</td>
-                                        <td class="center">A</td>
-                                        <td class="center">1.7</td>
-                                        <td class="center">1.7</td>
-                                        <td class="center">1.7</td>
+                                        <td class="center">1.2</td>
+                                        <td class="center">B</td>
+                                        <td class="center">1.2</td>
+                                        <td class="center">1.2</td>
+                                        <td class="center">1.2</td>
                                     </tr><tr class="gradeA odd" role="row">
-                                        <td class="sorting_1">Gecko</td>
+                                        <td class="sorting_1">1003</td>
                                         <td>Firefox 2.0</td>
                                         <td>Win 98+ / OSX.2+</td>
-                                        <td class="center">1.8</td>
-                                        <td class="center">A</td>
-                                        <td class="center">1.7</td>
-                                        <td class="center">1.7</td>
-                                        <td class="center">1.7</td>
+                                        <td class="center">1.3</td>
+                                        <td class="center">C</td>
+                                        <td class="center">1.3</td>
+                                        <td class="center">1.3</td>
+                                        <td class="center">1.3</td>
                                     </tr><tr class="gradeA even" role="row">
-                                        <td class="sorting_1">Gecko</td>
+                                        <td class="sorting_1">1004</td>
                                         <td>Firefox 3.0</td>
                                         <td>Win 2k+ / OSX.3+</td>
-                                        <td class="center">1.9</td>
-                                        <td class="center">A</td>
-                                        <td class="center">1.7</td>
-                                        <td class="center">1.7</td>
-                                        <td class="center">1.7</td>
+                                        <td class="center">1.4</td>
+                                        <td class="center">D</td>
+                                        <td class="center">1.4</td>
+                                        <td class="center">1.4</td>
+                                        <td class="center">1.4</td>
                                     </tr><tr class="gradeA odd" role="row">
-                                        <td class="sorting_1">Gecko</td>
+                                        <td class="sorting_1">1005</td>
                                         <td>Camino 1.0</td>
                                         <td>OSX.2+</td>
-                                        <td class="center">1.8</td>
-                                        <td class="center">A</td>
-                                        <td class="center">1.7</td>
-                                        <td class="center">1.7</td>
-                                        <td class="center">1.7</td>
+                                        <td class="center">1.5</td>
+                                        <td class="center">E</td>
+                                        <td class="center">1.5</td>
+                                        <td class="center">1.5</td>
+                                        <td class="center">1.5</td>
                                     </tr><tr class="gradeA even" role="row">
-                                        <td class="sorting_1">Gecko</td>
+                                        <td class="sorting_1">1006</td>
                                         <td>Camino 1.5</td>
                                         <td>OSX.3+</td>
-                                        <td class="center">1.8</td>
-                                        <td class="center">A</td>
-                                        <td class="center">1.7</td>
-                                        <td class="center">1.7</td>
-                                        <td class="center">1.7</td>
+                                        <td class="center">1.6</td>
+                                        <td class="center">F</td>
+                                        <td class="center">1.6</td>
+                                        <td class="center">1.6</td>
+                                        <td class="center">1.6</td>
                                     </tr><tr class="gradeA odd" role="row">
-                                        <td class="sorting_1">Gecko</td>
+                                        <td class="sorting_1">1007</td>
                                         <td>Netscape 7.2</td>
                                         <td>Win 95+ / Mac OS 8.6-9.2</td>
                                         <td class="center">1.7</td>
-                                        <td class="center">A</td>
+                                        <td class="center">G</td>
                                         <td class="center">1.7</td>
                                         <td class="center">1.7</td>
                                         <td class="center">1.7</td>
                                     </tr><tr class="gradeA even" role="row">
-                                        <td class="sorting_1">Gecko</td>
+                                        <td class="sorting_1">1008</td>
                                         <td>Netscape Browser 8</td>
                                         <td>Win 98SE+</td>
-                                        <td class="center">1.7</td>
-                                        <td class="center">A</td>
-                                        <td class="center">1.7</td>
-                                        <td class="center">1.7</td>
-                                        <td class="center">1.7</td>
+                                        <td class="center">1.8</td>
+                                        <td class="center">H</td>
+                                        <td class="center">1.8</td>
+                                        <td class="center">1.8</td>
+                                        <td class="center">1.8</td>
                                     </tr><tr class="gradeA odd" role="row">
-                                        <td class="sorting_1">Gecko</td>
+                                        <td class="sorting_1">1009</td>
                                         <td>Netscape Navigator 9</td>
                                         <td>Win 98+ / OSX.2+</td>
-                                        <td class="center">1.8</td>
-                                        <td class="center">A</td>
-                                        <td class="center">1.7</td>
-                                        <td class="center">1.7</td>
-                                        <td class="center">1.7</td>
+                                        <td class="center">1.9</td>
+                                        <td class="center">I</td>
+                                        <td class="center">1.9</td>
+                                        <td class="center">1.9</td>
+                                        <td class="center">1.9</td>
                                     </tr><tr class="gradeA even" role="row">
-                                        <td class="sorting_1">Gecko</td>
+                                        <td class="sorting_1">1010</td>
                                         <td>Mozilla 1.0</td>
                                         <td>Win 95+ / OSX.1+</td>
-                                        <td class="center">1</td>
-                                        <td class="center">A</td>
-                                        <td class="center">1.7</td>
-                                        <td class="center">1.7</td>
-                                        <td class="center">1.7</td>
+                                        <td class="center">1.10</td>
+                                        <td class="center">J</td>
+                                        <td class="center">1.10</td>
+                                        <td class="center">1.10</td>
+                                        <td class="center">1.10</td>
                                     </tr></tbody>
+                                   
+                            </table>
+             
+            
+              
                             </table></div>
                              
                              <c:if test="${pageMaker.prev}">
