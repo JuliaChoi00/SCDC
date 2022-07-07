@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "//mybatis.org/DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="org.scdc.mapper.ExportMapper">
+
+<!--  1. 목록보기///////////////////////////////-->
+	<select id = "getList" resultType="org.scdc.domain.PartVO">
+		<!-- > 부호를 xml로 인식하지 말라 -->
+		<![CDATA[
+			select * from tbl_part
+		]]>
+	</select>
+	
+<!--  1-1. 목록보기 with page ///////////////////////////////-->	
+	<select id="getListWithPaging" >
+	<!-- > 부호를 xml로 인신하지 말라 -->
+		<![CDATA[
+			
+		]]>
+	</select>
+	
+	<select id="count" resultType="int">
+		select count(*) from tbl_part		
+	</select>
+	
+	<select id="submit" resultType="long">
+
+	</select>
+	
+	<select id="quiz1" >
+	
+	</select>
+	
+	<select id="quiz2" >
+
+	</select>
+	
+<!--  2. 상세보기///////////////////////////////-->
+
+	<select id="read" >
+
+	</select>
+	
+<!--  3. 글 등록///////////////////////////////-->
+	
+	<insert id="insert">
+
+	</insert>
+	
+<!--  3-1. 글 등록///////////////////////////////-->
+	<insert id = "insertSelectKey">
+		<selectKey>
+
+		</selectKey>
+
+	</insert>
+	
+<!--  4. 글 수정///////////////////////////////-->
+	
+	<update id ="update">
+
+	</update>
+
+<!--  5. 글 삭제///////////////////////////////-->
+	
+	<delete id="delete">
+
+	</delete>
+	
+</mapper>
