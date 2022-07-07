@@ -15,13 +15,15 @@ public class JDBCTest {
 	@Test
 	public void testConnection() {
 		try {
-		Class.forName("oracle.jdbc.driver.OracleDriver");//?ìú?ùº?ù¥Î≤ÑÎ°ú?î©
+
+		Class.forName("oracle.jdbc.driver.OracleDriver");
 		DriverManager.getConnection("jdbc:oracle:thin:@192.168.0.30:1521:XE",
 				"scdc", "1234");
-		log.info("JDBC ø¨∞·º∫∞¯");
+		log.info("JDBC Ïó∞Í≤∞ÏÑ±Í≥µ");
+
 		}catch(Exception e) {
 			e.printStackTrace();
-			fail("ø¨∞·Ω«∆–");
+			fail("Ïó∞Í≤∞Ïã§Ìå®");
 
 			//fail(e.getMessage());
 		}

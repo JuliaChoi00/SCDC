@@ -22,7 +22,10 @@
 	</beans:bean>
 	
 	<context:component-scan base-package="org.scdc.controller" />
-	
+	<!-- excel 이라는 뷰 요청이 왔을 때 ExcelView라는 클래스로 출력 -->
+
+<beans:bean id="excel"
+class="org.scdc.dao.ExcelView"/>
 	
 	
 </beans:beans>
