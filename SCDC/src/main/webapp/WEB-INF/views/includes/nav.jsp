@@ -17,18 +17,13 @@
             <!-- /.navbar-header -->
 
             <ul class="nav navbar-top-links navbar-right">
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-user fa-fw"></i> ${user}사용자 님
-                    </a>
-
-                    <!-- /.dropdown-user -->
+                <li >     
+                        <i class="fa fa-user fa-fw"></i> ${signedUser} 님
                 </li>
-                <!-- /.dropdown -->
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-sign-out fa-fw"></i> <a href="login">로그아웃 
-                    </a>                    
+                <li>
+                <a href="login">
+                        <i class="fa fa-sign-out fa-fw"> </i>로그아웃 
+                </a>          
                 </li>
             </ul>
             <!-- /.navbar-top-links -->

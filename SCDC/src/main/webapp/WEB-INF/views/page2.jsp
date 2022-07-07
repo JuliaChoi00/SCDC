@@ -1,26 +1,29 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../views/includes/header.jsp"%>
-
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 
-<script src="//code.jquery.com/jquery.min.js"></script>
+<!-- jQuery -->
+<script src="/resources/vendor/jquery/jquery.min.js"></script>
+<!-- <script src="//code.jquery.com/jquery.min.js"></script> -->
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
-
 
 <body>
 	<div id="wrapper">
+
+	<!-- include nav.jsp add by JuliaChoi 2022.07.06 -->
+	<%@ include file="../views/includes/nav.jsp"%>
 		<div id="page-wrapper" style="min-height: 868px;">
 			<div class="row"><span style="display: inline-block; width: 45%; margin-right: 2%;">
 				생산품 <select name="job">
-   	<option value=""></option>
-    <option value="냉장고">냉장고</option>
-    <option value="선풍기">선풍기</option>
-    <option value="공기청정기">공기청정기</option>
-	</select>
-	&nbsp;&nbsp;&nbsp;&nbsp;
+				   	<option value=""></option>
+				    <option value="냉장고">냉장고</option>
+				    <option value="선풍기">선풍기</option>
+				    <option value="공기청정기">공기청정기</option>
+					</select>
+	
 	<input class="datepicker">
 	
 	<script>
@@ -49,15 +52,16 @@
        //초기값을 오늘 날짜로 설정해줘야 합니다.
        $('.datepicker').datepicker('setDate', 'today'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)            
    });
-</script> 			
+</script>	
+
 		&nbsp;&nbsp;&nbsp;&nbsp;		
 	<!-- 링크가 파일이름이 되기 때문에 엑셀파일의 확장자를
 	뒤에 붙이는 것이 좋습니다-->
 	<a href="excel.xls">엑셀파일 만들기</a> &nbsp;&nbsp;&nbsp;&nbsp;
 	<!-- 엑셀 파일을 읽어서 출력하는 요청 -->
-    <a href="excelread.do">엑셀파일 읽기</a><br/>			
-				
-				<div class="col-sm-12"><table width="100%" class="table table-striped table-bordered table-hover dataTable no-footer dtr-inline" id="ascending" role="grid" aria-describedby="dataTables-example_info" style="width: 200%;">
+    <a href="excelread.do">엑셀파일 읽기</a><br/>	
+    		
+				<div class="col-sm-12"><table width="100%" class="table table-striped table-bordered table-hover dataTable no-footer dtr-inline" id="dataTables-example" role="grid" aria-describedby="dataTables-example_info" style="width: 200%;">
                                 <thead>
          <tr role="row">
 	         <th class="sorting_asc" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 168px;">품목코드</th>
@@ -70,105 +74,22 @@
 	         <th class="sorting_asc" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 168px;">품목설명</th>
         </tr>
                                 </thead>
-
                                 <tbody>
            
-                                <tr class="gradeA odd" role="row">
-                                        <td class="sorting_1">1001</td>
-                                        <td>Firefox 1.0</td>
-                                        <td>Win 98+ / OSX.2+</td>
-                                        <td class="center">1.1</td>
-                                        <td class="center">A</td>
-                                        <td class="center">1.1</td>
-                                        <td class="center">1.1</td>
-                                        <td class="center">1.1</td>
-                                    </tr><tr class="gradeA even" role="row">
-                                        <td class="sorting_1">1002</td>
-                                        <td>Firefox 1.5</td>
-                                        <td>Win 98+ / OSX.2+</td>
-                                        <td class="center">1.2</td>
-                                        <td class="center">B</td>
-                                        <td class="center">1.2</td>
-                                        <td class="center">1.2</td>
-                                        <td class="center">1.2</td>
-                                    </tr><tr class="gradeA odd" role="row">
-                                        <td class="sorting_1">1003</td>
-                                        <td>Firefox 2.0</td>
-                                        <td>Win 98+ / OSX.2+</td>
-                                        <td class="center">1.3</td>
-                                        <td class="center">C</td>
-                                        <td class="center">1.3</td>
-                                        <td class="center">1.3</td>
-                                        <td class="center">1.3</td>
-                                    </tr><tr class="gradeA even" role="row">
-                                        <td class="sorting_1">1004</td>
-                                        <td>Firefox 3.0</td>
-                                        <td>Win 2k+ / OSX.3+</td>
-                                        <td class="center">1.4</td>
-                                        <td class="center">D</td>
-                                        <td class="center">1.4</td>
-                                        <td class="center">1.4</td>
-                                        <td class="center">1.4</td>
-                                    </tr><tr class="gradeA odd" role="row">
-                                        <td class="sorting_1">1005</td>
-                                        <td>Camino 1.0</td>
-                                        <td>OSX.2+</td>
-                                        <td class="center">1.5</td>
-                                        <td class="center">E</td>
-                                        <td class="center">1.5</td>
-                                        <td class="center">1.5</td>
-                                        <td class="center">1.5</td>
-                                    </tr><tr class="gradeA even" role="row">
-                                        <td class="sorting_1">1006</td>
-                                        <td>Camino 1.5</td>
-                                        <td>OSX.3+</td>
-                                        <td class="center">1.6</td>
-                                        <td class="center">F</td>
-                                        <td class="center">1.6</td>
-                                        <td class="center">1.6</td>
-                                        <td class="center">1.6</td>
-                                    </tr><tr class="gradeA odd" role="row">
-                                        <td class="sorting_1">1007</td>
-                                        <td>Netscape 7.2</td>
-                                        <td>Win 95+ / Mac OS 8.6-9.2</td>
-                                        <td class="center">1.7</td>
-                                        <td class="center">G</td>
-                                        <td class="center">1.7</td>
-                                        <td class="center">1.7</td>
-                                        <td class="center">1.7</td>
-                                    </tr><tr class="gradeA even" role="row">
-                                        <td class="sorting_1">1008</td>
-                                        <td>Netscape Browser 8</td>
-                                        <td>Win 98SE+</td>
-                                        <td class="center">1.8</td>
-                                        <td class="center">H</td>
-                                        <td class="center">1.8</td>
-                                        <td class="center">1.8</td>
-                                        <td class="center">1.8</td>
-                                    </tr><tr class="gradeA odd" role="row">
-                                        <td class="sorting_1">1009</td>
-                                        <td>Netscape Navigator 9</td>
-                                        <td>Win 98+ / OSX.2+</td>
-                                        <td class="center">1.9</td>
-                                        <td class="center">I</td>
-                                        <td class="center">1.9</td>
-                                        <td class="center">1.9</td>
-                                        <td class="center">1.9</td>
-                                    </tr><tr class="gradeA even" role="row">
-                                        <td class="sorting_1">1010</td>
-                                        <td>Mozilla 1.0</td>
-                                        <td>Win 95+ / OSX.1+</td>
-                                        <td class="center">1.10</td>
-                                        <td class="center">J</td>
-                                        <td class="center">1.10</td>
-                                        <td class="center">1.10</td>
-                                        <td class="center">1.10</td>
-                                    </tr></tbody>
-                                   
-                            </table>
-             
-            
-              
+<c:forEach var="part" items="${report}">                              
+                                    <tr class="odd gradeX">
+                                        <td><c:out value="${part.partCode}"></c:out></td>
+                                        <td><c:out value="${part.partName}"></c:out></td>
+                                        <td><c:out value="${part.nickName}"></c:out></td>
+                                        <td><c:out value="${part.library}"></c:out></td>
+                                        <td><c:out value="${part.drw_No}"></c:out></td>
+                                        <td><c:out value="${part.drw_Img}"></c:out></td>
+                                        <td><c:out value="${part.common}"></c:out></td>
+                                        <td><c:out value="${part.remark}"></c:out></td>
+                                        
+                                    </tr>
+</c:forEach> 
+                                    </tbody>
                             </table></div>
                              
                              <c:if test="${pageMaker.prev}">
@@ -194,7 +115,7 @@
                             	<a href="/board/list?pageNum=${pageMaker.endPage+1}&&amount=${pageMaker.cri.amount}"> next </a>
                             </c:if>
      &nbsp;&nbsp;&nbsp;&nbsp;                        
-   <form action="/page2" method="get">                        
+   <form action="/page" method="get">                        
    <select name="type">
     <option >검색조건</option>
    	<option ${pageMaker.cri.type =="T" ? selected : "" } value="T">품목코드</option>
@@ -205,19 +126,20 @@
    </form> 
                             
                             
-                            </div>		
-		
-		<!-- jQuery -->
-		
+              </div>		
+       </div>
+	</div>
 
-		<!-- Bootstrap Core JavaScript -->
-		<script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/resources/vendor/bootstrap/js/bootstrap.min.js"></script>
 
-		<!-- Metis Menu Plugin JavaScript -->
-		<script src="../vendor/metisMenu/metisMenu.min.js"></script>
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="/resources/vendor/metisMenu/metisMenu.min.js"></script>
 
-		<!-- Custom Theme JavaScript -->
-		<script src="../dist/js/sb-admin-2.js"></script>
+    <!-- Custom Theme JavaScript -->
+    <script src="/resources/dist/js/sb-admin-2.js"></script>
+
+    <!-- Page-Level Demo Scripts - Tables - Use for reference -->
 </body>
 
 </html>
