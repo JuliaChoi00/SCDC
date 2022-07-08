@@ -5,165 +5,108 @@
 
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 
-<script src="//code.jquery.com/jquery.min.js"></script>
+<!-- jQuery -->
+<script src="/resources/vendor/jquery/jquery.min.js"></script>
+<!-- <script src="//code.jquery.com/jquery.min.js"></script> -->
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
-
 
 <body>
 	<div id="wrapper">
+
+	<!-- include nav.jsp add by JuliaChoi 2022.07.06 -->
+	<%@ include file="../views/includes/nav.jsp"%>
 		<div id="page-wrapper" style="min-height: 868px;">
-			<div class="row"><span style="display: inline-block; width: 45%; margin-right: 2%;">
-			
-				<form action="/exportPart" method="get">
-					<div class="col-sm-12"><table width="100%" class="table table-striped table-bordered table-hover dataTable no-footer dtr-inline" id="dataTables-example" role="grid" aria-describedby="dataTables-example_info" style="width: 200%;">
-						<thead>
-					         <tr role="row">
-						         <th class="sorting_asc" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 168px;">품목코드</th>
-						         <th class="sorting_asc" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 168px;">품목이름</th>
-						         <th class="sorting_asc" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 168px;">약칭</th>
-								 <th class="sorting_asc" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 168px;">품목구분</th>  
-							     <th class="sorting_asc" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 168px;">도면번호</th>
-						  		 <th class="sorting_asc" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 168px;">도면이미지</th>
-						         <th class="sorting_asc" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 168px;">공용여부</th>
-						         <th class="sorting_asc" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 168px;">품목설명</th>
-						         <th class="sorting_asc" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 168px;">재고수량</th>
-						         <th class="sorting_asc" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 168px;">출고량</th>
-					        </tr>
-						</thead>
-	                    <tbody>
-	           
-	                        <tr class="gradeA odd" role="row">
-	                                <td class="sorting_1">Gecko</td>
-	                                <td>Firefox 1.0</td>
-	                                <td>Win 98+ / OSX.2+</td>
-	                                <td class="center">1.7</td>
-	                                <td class="center">A</td>
-	                                <td class="center">1.7</td>
-	                                <td class="center">1.7</td>
-	                                <td class="center">1.7</td>
-	                                <td class="center">1.7</td>
-	                                <td class="center"><input type="int"></td>
-	                            </tr><tr class="gradeA even" role="row">
-	                                <td class="sorting_1">Gecko</td>
-	                                <td>Firefox 1.5</td>
-	                                <td>Win 98+ / OSX.2+</td>
-	                                <td class="center">1.8</td>
-	                                <td class="center">A</td>
-	                                <td class="center">1.7</td>
-	                                <td class="center">1.7</td>
-	                                <td class="center">1.7</td>
-	                                <td class="center">1.7</td>
-	 								<td class="center"><input type="int"></td>                                     
-	                            </tr><tr class="gradeA odd" role="row">
-	                                <td class="sorting_1">Gecko</td>
-	                                <td>Firefox 2.0</td>
-	                                <td>Win 98+ / OSX.2+</td>
-	                                <td class="center">1.8</td>
-	                                <td class="center">A</td>
-	                                <td class="center">1.7</td>
-	                                <td class="center">1.7</td>
-	                                <td class="center">1.7</td>
-	                                <td class="center">1.7</td>
-	                                <td class="center"><input type="int"></td> 
-	                            </tr><tr class="gradeA even" role="row">
-	                                <td class="sorting_1">Gecko</td>
-	                                <td>Firefox 3.0</td>
-	                                <td>Win 2k+ / OSX.3+</td>
-	                                <td class="center">1.9</td>
-	                                <td class="center">A</td>
-	                                <td class="center">1.7</td>
-	                                <td class="center">1.7</td>
-	                                <td class="center">1.7</td>
-	                                <td class="center">1.7</td>
-	                                <td class="center"><input type="int"></td> 
-	                            </tr><tr class="gradeA odd" role="row">
-	                                <td class="sorting_1">Gecko</td>
-	                                <td>Camino 1.0</td>
-	                                <td>OSX.2+</td>
-	                                <td class="center">1.8</td>
-	                                <td class="center">A</td>
-	                                <td class="center">1.7</td>
-	                                <td class="center">1.7</td>
-	                                <td class="center">1.7</td>
-	                                <td class="center">1.7</td>
-	                                <td class="center"><input type="int"></td> 
-	                            </tr><tr class="gradeA even" role="row">
-	                                <td class="sorting_1">Gecko</td>
-	                                <td>Camino 1.5</td>
-	                                <td>OSX.3+</td>
-	                                <td class="center">1.8</td>
-	                                <td class="center">A</td>
-	                                <td class="center">1.7</td>
-	                                <td class="center">1.7</td>
-	                                <td class="center">1.7</td>
-	                                <td class="center">1.7</td>
-	                                <td class="center"><input type="int"></td> 
-	                            </tr><tr class="gradeA odd" role="row">
-	                                <td class="sorting_1">Gecko</td>
-	                                <td>Netscape 7.2</td>
-	                                <td>Win 95+ / Mac OS 8.6-9.2</td>
-	                                <td class="center">1.7</td>
-	                                <td class="center">A</td>
-	                                <td class="center">1.7</td>
-	                                <td class="center">1.7</td>
-	                                <td class="center">1.7</td>
-	                                <td class="center">1.7</td>
-	                                <td class="center"><input type="int"></td> 
-	                            </tr><tr class="gradeA even" role="row">
-	                                <td class="sorting_1">Gecko</td>
-	                                <td>Netscape Browser 8</td>
-	                                <td>Win 98SE+</td>
-	                                <td class="center">1.7</td>
-	                                <td class="center">A</td>
-	                                <td class="center">1.7</td>
-	                                <td class="center">1.7</td>
-	                                <td class="center">1.7</td>
-	                                <td class="center">1.7</td>
-	                                <td class="center"><input type="int"></td> 
-	                            </tr><tr class="gradeA odd" role="row">
-	                                <td class="sorting_1">Gecko</td>
-	                                <td>Netscape Navigator 9</td>
-	                                <td>Win 98+ / OSX.2+</td>
-	                                <td class="center">1.8</td>
-	                                <td class="center">A</td>
-	                                <td class="center">1.7</td>
-	                                <td class="center">1.7</td>
-	                                <td class="center">1.7</td>
-	                                <td class="center">1.7</td>
-	                                <td class="center"><input type="int"></td> 
-	                            </tr><tr class="gradeA even" role="row">
-	                                <td class="sorting_1">Gecko</td>
-	                                <td>Mozilla 1.0</td>
-	                                <td>Win 95+ / OSX.1+</td>
-	                                <td class="center">1</td>
-	                                <td class="center">A</td>
-	                                <td class="center">1.7</td>
-	                                <td class="center">1.7</td>
-	                                <td class="center">1.7</td>
-	                                <td class="center">1.7</td>
-	                                <td class="center"><input type="int"></td> 
-	                            </tr>
+			<div class="row"><span style="display: inline-block; width: 45%; margin-right: 2%;">	
+
+    		<form action="/exportPart method="get">
+				<div class="col-sm-12"><table width="100%" class="table table-striped table-bordered table-hover dataTable no-footer dtr-inline" id="dataTables-example" role="grid" aria-describedby="dataTables-example_info" style="width: 200%;">
+                                <thead>
+         <tr role="row">
+	         <th class="sorting_asc" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 168px;">품목코드</th>
+	         <th class="sorting_asc" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 168px;">품목이름</th>
+	         <th class="sorting_asc" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 168px;">약칭</th>
+	         <th class="sorting_asc" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 168px;">재고수량</th>
+	         <th class="sorting_asc" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 168px;">출고량</th>
+        </tr>
+                                </thead>
+                                <tbody>
+    
+<c:forEach var="part" items="${getListFromRefrigerator}">                              
+                                    <tr class="odd gradeX">
+                                        <td><c:out value="${part.partCode}"></c:out></td>
+                                        <td><c:out value="${part.partName}"></c:out></td>
+                                        <td><c:out value="${part.nickName}"></c:out></td>
+                                        <td><c:out value="${part.stockquantity}"></c:out></td>
+                                        <td><input type=number></td>                                 
+                                    </tr>
+                                    
+                            
+</c:forEach> 
+                                    </tbody>
+                            </table>
+                            <input type="reset" value="초기화">
+                            <input type="submit" value="저장">
+                            </div>
+                            </form>
+                             
+                             <c:if test="${pageMaker.prev}">
+                            <a href="/board/list?pageNum=${pageMaker.startPage-1}&&amount=${pageMaker.cri.amount}"> prev </a>  &nbsp;&nbsp;&nbsp;&nbsp;
+                            </c:if>
+                            
+                            <c:forEach begin="${pageMaker.startPage}"  end="${pageMaker.endPage}" var="num">
+                            	 <a href="/board/list?pageNum=${num}&amount=${pageMaker.cri.amount}&type=${pageMaker.cri.type}&keyword=${pageMaker.cri.keyword}">
+  <%-- 현재페이지를 ${param.pageNum } or ${pageMaker.cri.pageNum } or ${critera.pageNum} --%>
+                            	 <c:if test="${pageMaker.cri.pageNum == num }" >
+                            	 	<b>${num} </b>
+                            	 </c:if>
 	                            
-							</tbody>														
-						</table>
-						<input type="reset" value="초기화">
-						<input type="submit" value="저장">
-					</div>
-				</form>
-		
+	                             <c:if test="${pageMaker.cri.pageNum != num }" >
+                            	 	${num} 
+                            	 </c:if>
 
+                            	
+                            	 </a> &nbsp;&nbsp;&nbsp;&nbsp;
+                            </c:forEach>
+                            
+                            <c:if test="${pageMaker.next}">
+                            	<a href="/board/list?pageNum=${pageMaker.endPage+1}&&amount=${pageMaker.cri.amount}"> next </a>
+                            </c:if>
+     &nbsp;&nbsp;&nbsp;&nbsp;   
+                         
+   <form action="/page" method="get">                        
+   <select name="type">
+    <option >검색조건</option>
+   	<option ${pageMaker.cri.type =="T" ? selected : "" } value="T">품목코드</option>
+   	<option ${pageMaker.cri.type =="C" ? selected : "" } value="C">제품명</option>
+   </select>     
+   <input type="text" name="keyword" value="${pageMaker.cri.keyword }"> 
+   <input type="submit" value="검색">                      
+   </form> 
+                            
+                            
+                            
+                  <!-- 참고 -->          
+              <select onchange="location.href='?productName=' + $(this).val();">
+    	<option value="0">선택</option>
+    	<option value="리모콘">리모콘</option>
+    </select>             
+    
+    
+        
+              </div>		
+       </div>
+	</div>
 
-		<!-- jQuery -->
-		
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/resources/vendor/bootstrap/js/bootstrap.min.js"></script>
 
-		<!-- Bootstrap Core JavaScript -->
-		<script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="/resources/vendor/metisMenu/metisMenu.min.js"></script>
 
-		<!-- Metis Menu Plugin JavaScript -->
-		<script src="../vendor/metisMenu/metisMenu.min.js"></script>
+    <!-- Custom Theme JavaScript -->
+    <script src="/resources/dist/js/sb-admin-2.js"></script>
 
-		<!-- Custom Theme JavaScript -->
-		<script src="../dist/js/sb-admin-2.js"></script>
+    <!-- Page-Level Demo Scripts - Tables - Use for reference -->
 </body>
 
 </html>

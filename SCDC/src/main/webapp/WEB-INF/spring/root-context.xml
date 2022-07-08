@@ -35,11 +35,10 @@
 		<property name="dataSource" ref="dataSource"></property>
 	
 	</bean>
-	
-	<mybatis-spring:scan base-package="org.zerock.mapper" />
-	<context:component-scan base-package="org.zerock.service" />
+
+	<mybatis-spring:scan base-package="org.scdc.mapper" />
+	<context:component-scan base-package="org.scdc.dao" /> 
 	<context:component-scan base-package="org.scdc.service" />
-	<context:component-scan base-package="org.scdc.dao" />
-		
+
 </beans>
 

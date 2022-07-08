@@ -5,52 +5,59 @@
 
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 
-<script src="//code.jquery.com/jquery.min.js"></script>
+<!-- jQuery -->
+<script src="/resources/vendor/jquery/jquery.min.js"></script>
+<!-- <script src="//code.jquery.com/jquery.min.js"></script> -->
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 
-<head>
-	<style>
-		table {
-			width: 70%;
-			margin: auto;
-		}
-		table, td, th {
-			border-collapse: collapse;
-			border: 2px solid black;
-		}	
-	</style>
-</head>
-
 <body>
-		<div class="panel-head">
-			<h1><b>제품리스트</b></h1>
-		</div>
-		
-		<div class="panel-body">
-			<table>
-				<tr>
-					<th><a href="doExportPart">냉장고</a></th>
-					<th><a href="doExportPart">TV</a></th>
-					<th><a href="doExportPart">공기청정기</a></th>
-					<th><a href="doExportPart">선풍기</a></th>
-				</tr>
-				<tr>
-					<th><a href="doExportPart">콤푸타</a></th>
-					<th></th>
-					<th></th>
-					<th></th>
-				</tr>
-			</table>
-		</div>
+	<div id="wrapper">
 
-		<!-- Bootstrap Core JavaScript -->
-		<script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+	<!-- include nav.jsp add by JuliaChoi 2022.07.06 -->
+	<%@ include file="../views/includes/nav.jsp"%>
+		<div id="page-wrapper" style="min-height: 868px;">
+			<div class="row"><span style="display: inline-block; width: 45%; margin-right: 2%;">   		
+				<div class="col-sm-12">
+					<table width="100%" class="table table-striped table-bordered table-hover dataTable no-footer dtr-inline" id="dataTables-example" role="grid" aria-describedby="dataTables-example_info" style="width: 200%;">
 
-		<!-- Metis Menu Plugin JavaScript -->
-		<script src="../vendor/metisMenu/metisMenu.min.js"></script>
+                      <tbody>
+           
+                             <tr align="center">
+                                 <td><a href="/doExportPart/냉장고">냉장고</a></td>
+                                 
+                                 <td><a href="doExportPart/리모콘">리모콘</a></td>
+                                 <td>선풍기</td>
+                                 <td>청소기</td>
+                                 <td>공기청정기</td>                               
+                             </tr>
+						         
+                             <tr align="center">
+                                 <td>마우스</td>
+                                 <td>키보드</td>                             
+                                 <td></td>                             
+                                 <td></td>                             
+                                 <td></td>                             
+                             </tr>
+						
+                      </tbody>
+                      
+                   </table>
+                </div>
+                      
+              </div>		
+       </div>
+	</div>
 
-		<!-- Custom Theme JavaScript -->
-		<script src="../dist/js/sb-admin-2.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/resources/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="/resources/vendor/metisMenu/metisMenu.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="/resources/dist/js/sb-admin-2.js"></script>
+
+    <!-- Page-Level Demo Scripts - Tables - Use for reference -->
 </body>
 
 </html>

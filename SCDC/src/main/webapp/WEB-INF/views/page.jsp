@@ -76,7 +76,7 @@
                                 </thead>
                                 <tbody>
            
-<c:forEach var="part" items="${getList}">                              
+<c:forEach var="part" items="${report}">                              
                                     <tr class="odd gradeX">
                                         <td><c:out value="${part.partCode}"></c:out></td>
                                         <td><c:out value="${part.partName}"></c:out></td>
