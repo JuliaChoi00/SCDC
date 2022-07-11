@@ -9,7 +9,10 @@ PUBLIC "//mybatis.org/DTD Mapper 3.0//EN"
 	<select id = "getList" resultType="org.scdc.domain.PartVO">
 		<!-- > 부호를 xml로 인식하지 말라 -->
 		<![CDATA[
-			select * from tbl_part
+		select 
+			a.partcode, a.partname, a.nickname, a.library, a.drw_no, a.drw_img, a.common, a.remark, b.stockQuantity 
+		from tbl_part a, tbl_stock b 
+		where a.partcode=b.partcode
 		]]>
 	</select>
 	
@@ -25,21 +28,61 @@ PUBLIC "//mybatis.org/DTD Mapper 3.0//EN"
 		select count(*) from tbl_part		
 	</select>
 	
-	<select id="getListFromRefrigerator" resultType="org.scdc.domain.ExportProductVO">
+	<select id="getListFromProduct" resultType="org.scdc.domain.ExportProductVO">
 		<![CDATA[
 		SELECT 
-		    a.productcode, a.partcode, b.partname, b.nickname, c.stockquantity
+		   a.partcode, b.partname, b.nickname, c.stockquantity
 		FROM tbl_component a, tbl_part b, tbl_stock c
 		WHERE a.partcode=b.partcode and b.partcode=c.partcode
-		AND productcode=(SELECT productcode FROM tbl_product WHERE productname = #{ productName })
+		AND a.productcode=(select productcode from tbl_component where productname=#{productName}
 		]]>
 	</select>
 	
-	<select id="productCode" resultType="org.scdc.domain.ComponentVO">
+	<select id="getStockQuantity" resultType="org.scdc.domain.StockVO">
 		<![CDATA[
- 		select * from tbl_component where productcode=#{productcode}
+		select b.stockquantity
+		from tbl_component a, tbl_stock b
+		where a.partcode=b.partcode
+		AND a.partcode=10001
+		]]>
+	</select>
+	
+	<select id="getSelectList" resultType="org.scdc.domain.PartVO">
+		<![CDATA[
+		select 
+			a.partcode, a.partname, a.nickname, a.library, a.drw_no, a.drw_img, a.common, a.remark, b.stockQuantity 
+		from tbl_part a, tbl_stock b 
+		where a.partcode=#{productCode}
+		]]>
+	</select>	
+
+	<select id="getProduct" resultType="org.scdc.domain.ProductVO">
+		<![CDATA[
+		select * from tbl_product
+		]]>
+	</select>	
+	
+		<select id="getSelectProduct" resultType="org.scdc.domain.PartVO">
+		<![CDATA[
+		select 
+			distinct a.partcode, a.partname, a.nickname, a.library, a.drw_no, a.drw_img, a.common, a.remark, b.stockQuantity 
+		from tbl_part a, tbl_stock b, tbl_component c
+		where a.partcode=c.partcode
+		AND c.productcode=#{productLists}
+		]]>
+	</select>	
+	
+	
+	
+	
+	
+<!--	제품코드찾기
+	 <select id="productCode" resultType="org.scdc.domain.ComponentVO">
+		<![CDATA[
+ 		select * from tbl_component where productcode=#{productcode }
 		]]>	
 	</select>
+	 																		-->	
 	
 	<select id="quiz2" >
 

@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.annotations.Param;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.scdc.service.ExportService;
 import org.scdc.service.UserService;
@@ -50,11 +52,10 @@ public class LoginController {
         return "redirect:login";
     }
     
-    @RequestMapping("/page2")
-    public String page2(Model model){
+    @RequestMapping({"/page2"})
+    public void page2(Model model){
 		model.addAttribute("getList",service.getList());
-		System.out.println(service.getList());
-		return "/page2";
+		model.addAttribute("getProduct",service.getProduct());
 
     }
     
@@ -79,7 +80,8 @@ public class LoginController {
 	
 	@GetMapping("/doExportPart/{productName}")
 	public String doExportPart(@PathVariable("productName") String productName, Model model) {
-		model.addAttribute("getListFromRefrigerator", service.getListFromRefrigerator());
+		model.addAttribute("getListFromProduct", service.getListFromProduct());
+		System.out.println("잘받아옵니까? :" + service.getListFromProduct());
 		return "/doExportPart";
 	}
 	
@@ -93,6 +95,8 @@ public class LoginController {
 
     }
    
+	
+	//xls 파일 만들기
     @RequestMapping(value="excel.xls",method=RequestMethod.GET)
 	public String excel(Model model, HttpServletResponse response) {
 		//엑셀 파일에 출력할 데이터 생성
@@ -105,7 +109,7 @@ public class LoginController {
 //		//model.addAttribute("이름",데이터);
 //		model.addAttribute("list",list);
     	
-    	String fileName = "test12345";
+    	String fileName = "stockQuantityTable";
     	
 		response.setContentType("application/msexcel");
         response.setHeader("Content-Disposition", "attachment; filename=" + fileName + ".xls");
@@ -114,6 +118,13 @@ public class LoginController {
         try(OutputStream os=response.getOutputStream()) {
         	
         	Workbook workbook = userService.makeExcel();
+        	
+        	Sheet a = workbook.getSheet("test");
+        	
+        	Row r = a.createRow(2);
+        	
+        	r.createCell(1);
+        	
         	
 			workbook.write(os);
 			
@@ -124,8 +135,17 @@ public class LoginController {
 		
 		return "/test";
 	}
-    
+	
+
+
    
+	
+	
+	
+	
+	
+	
+	
     @GetMapping("test")
     public void test() {
     	

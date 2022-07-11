@@ -31,7 +31,7 @@
                                 </thead>
                                 <tbody>
     
-<c:forEach var="part" items="${getListFromRefrigerator}">                              
+<c:forEach var="part" items="${getListFromProduct}">                              
                                     <tr class="odd gradeX">
                                         <td><c:out value="${part.partCode}"></c:out></td>
                                         <td><c:out value="${part.partName}"></c:out></td>
@@ -85,11 +85,11 @@
                             
                             
                             
-                  <!-- 참고 -->          
-              <select onchange="location.href='?productName=' + $(this).val();">
-    	<option value="0">선택</option>
-    	<option value="리모콘">리모콘</option>
-    </select>             
+<!-- 셀렉문으로 할때 참고하기           
+		    <select onchange="location.href='?productName=' + $(this).val();">
+		    	<option value="0">선택</option>
+		    	<option value="리모콘">리모콘</option>
+		    </select>   														          -->
     
     
         

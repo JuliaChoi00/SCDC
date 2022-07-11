@@ -5,6 +5,8 @@ import java.util.List;
 import org.scdc.domain.ComponentVO;
 import org.scdc.domain.ExportProductVO;
 import org.scdc.domain.PartVO;
+import org.scdc.domain.ProductVO;
+import org.scdc.domain.StockVO;
 import org.springframework.stereotype.Component;
 
 public interface ExportService {
@@ -16,13 +18,23 @@ public interface ExportService {
 	//목록보기
 	public List<PartVO> getList();
 	
+	//선택한 제품의 모든 품목리스트 가져오기
+	public List<PartVO> getSelectList();
+	
+	//선택한 제품코드와 일치하는 품목리스트 가져오기
+	public List<PartVO> getSelectProduct(long productLists);
+	
 	//글개수 
 	public int count();
 	
 	//제품코드알기
 	public ComponentVO getProductCode(int productCode);
 	
-	//냉장고 출고 목록보기
-	public List<ExportProductVO> getListFromRefrigerator();
-
+	//선택 제품 품목 목록보기
+	public List<ExportProductVO> getListFromProduct();
+	
+	//재고량알기
+	public List<StockVO> getStockQuantity(int stockQuantity);
+	
+	public List<ProductVO> getProduct();
 }

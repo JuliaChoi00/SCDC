@@ -17,11 +17,11 @@
 	<%@ include file="../views/includes/nav.jsp"%>
 		<div id="page-wrapper" style="min-height: 868px;">
 			<div class="row"><span style="display: inline-block; width: 45%; margin-right: 2%;">
-				생산품 <select name="job">
-				   	<option value=""></option>
-				    <option value="냉장고">냉장고</option>
-				    <option value="선풍기">선풍기</option>
-				    <option value="공기청정기">공기청정기</option>
+				생산품 <select name="productList">
+					   	<option selected>선택</option>
+					   	<c:forEach items="${ getProduct }" var="product">
+					   		<option value=${ product.productcode }>${ product.productname }</option>
+					   	</c:forEach>
 					</select>
 	
 	<input class="datepicker">
@@ -61,36 +61,27 @@
 	<!-- 엑셀 파일을 읽어서 출력하는 요청 -->
     <a href="excelread.do">엑셀파일 읽기</a><br/>	
     		
-				<div class="col-sm-12"><table width="100%" class="table table-striped table-bordered table-hover dataTable no-footer dtr-inline" id="dataTables-example" role="grid" aria-describedby="dataTables-example_info" style="width: 200%;">
-                                <thead>
-         <tr role="row">
-	         <th class="sorting_asc" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 168px;">품목코드</th>
-	         <th class="sorting_asc" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 168px;">품목이름</th>
-	         <th class="sorting_asc" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 168px;">약칭</th>
-			 <th class="sorting_asc" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 168px;">품목구분</th>  
-		     <th class="sorting_asc" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 168px;">도면번호</th>
-	  		 <th class="sorting_asc" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 168px;">도면이미지</th>
-	         <th class="sorting_asc" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 168px;">공용여부</th>
-	         <th class="sorting_asc" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 168px;">품목설명</th>
-        </tr>
-                                </thead>
-                                <tbody>
-           
-<c:forEach var="part" items="${getList}">                              
-                                    <tr class="odd gradeX">
-                                        <td><c:out value="${part.partCode}"></c:out></td>
-                                        <td><c:out value="${part.partName}"></c:out></td>
-                                        <td><c:out value="${part.nickName}"></c:out></td>
-                                        <td><c:out value="${part.library}"></c:out></td>
-                                        <td><c:out value="${part.drw_No}"></c:out></td>
-                                        <td><c:out value="${part.drw_Img}"></c:out></td>
-                                        <td><c:out value="${part.common}"></c:out></td>
-                                        <td><c:out value="${part.remark}"></c:out></td>
-                                        
-                                    </tr>
-</c:forEach> 
-                                    </tbody>
-                            </table></div>
+		<div class="col-sm-12">
+			<table width="100%" class="table table-striped table-bordered table-hover dataTable no-footer dtr-inline productTable" id="dataTables-example" role="grid" aria-describedby="dataTables-example_info" style="width: 200%;">
+				<thead>
+			         <tr role="row">
+				         <th class="sorting_asc" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 168px;">품목코드</th>
+				         <th class="sorting_asc" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 168px;">품목이름</th>
+				         <th class="sorting_asc" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 168px;">약칭</th>
+						 <th class="sorting_asc" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 168px;">품목구분</th>  
+					     <th class="sorting_asc" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 168px;">도면번호</th>
+				  		 <th class="sorting_asc" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 168px;">도면이미지</th>
+				         <th class="sorting_asc" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 168px;">공용여부</th>
+				         <th class="sorting_asc" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 168px;">품목설명</th>
+				         <th class="sorting_asc" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 168px;">재고수량</th>
+			        </tr>
+					</thead>
+					
+					<tbody>           
+
+					</tbody>
+				</table>
+			</div>
                              
                              <c:if test="${pageMaker.prev}">
                             <a href="/board/list?pageNum=${pageMaker.startPage-1}&&amount=${pageMaker.cri.amount}"> prev </a>  &nbsp;&nbsp;&nbsp;&nbsp;
@@ -139,6 +130,41 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="/resources/dist/js/sb-admin-2.js"></script>
+    
+    
+    <script>
+    	$("select[name=productList]").on("change", function() {
+    		$.ajax({
+        		url: "/api/page2",
+        		type: "get",
+        		data: {
+        			"productLists" : $("select[name=productList]").val()
+        		},
+        		success: function(data) {
+        			
+        			console.log(data);
+        			
+        			for(var key in data) {
+        			$("table.productTable tbody").append(
+	                    `<tr class="odd gradeX">
+	    	                <td>` + data[key].partCode + `</td>
+	    	                <td>` + data[key].partName + `</td>
+	    	                <td>` + data[key].nickName + `</td>
+	    	                <td>` + data[key].library + `</td>
+	    	                <td>` + data[key].drw_No + `</td>
+	    	                <td>` + data[key].drw_Img + `</td>
+	    	                <td>` + data[key].Common + `</td>
+	    	                <td>` + data[key].Remark + `</td>
+	    	                <td>` + data[key].stockQuantity + `</td>
+	                    </tr>`
+	                )
+       			}
+        		}
+        			
+        	})
+    	})
+    	
+    </script>
 
     <!-- Page-Level Demo Scripts - Tables - Use for reference -->
 </body>

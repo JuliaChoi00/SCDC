@@ -88,10 +88,11 @@ public class UserServiceImpl implements UserService {
         // 첫 번째 줄에 Cell 설정하기-------------
         cell = row.createCell(0);
         
-        cell.setCellValue("asdf");
+        cell.setCellValue("첫째줄");
         
         return xlsWb;
         
+      
 //        try {
 //            File xlsFile = new File("C:/Users/MIT/Desktop/test.xls");
 //            FileOutputStream fileOut = new FileOutputStream(xlsFile);

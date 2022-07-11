@@ -5,6 +5,8 @@ import java.util.List;
 import org.scdc.domain.ComponentVO;
 import org.scdc.domain.ExportProductVO;
 import org.scdc.domain.PartVO;
+import org.scdc.domain.ProductVO;
+import org.scdc.domain.StockVO;
 import org.scdc.mapper.ExportMapper;
 import org.springframework.stereotype.Service;
 
@@ -34,13 +36,37 @@ public class ExportServiceIml implements ExportService {
 	}
 
 	@Override
-	public List<ExportProductVO> getListFromRefrigerator() {
-		return mapper.getListFromRefrigerator();
+	public List<ExportProductVO> getListFromProduct() {
+		return mapper.getListFromProduct();
 	}
 
 	@Override
 	public ComponentVO getProductCode(int productCode) {
 		return mapper.productCode(productCode);
+	}
+
+	@Override
+	public List<StockVO> getStockQuantity(int stockQuantity) {
+		// TODO Auto-generated method stub
+		return mapper.getStockQuantity(stockQuantity);
+	}
+
+	@Override
+	public List<PartVO> getSelectList() {
+		// TODO Auto-generated method stub
+		return mapper.getList();
+	}
+
+	@Override
+	public List<ProductVO> getProduct() {
+		// TODO Auto-generated method stub
+		return mapper.getProduct();
+	}
+
+	@Override
+	public List<PartVO> getSelectProduct(long productLists) {
+		// TODO Auto-generated method stub
+		return mapper.getSelectProduct(productLists);
 	}
 
 }

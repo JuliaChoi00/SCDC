@@ -12,4 +12,5 @@ public class PartVO {
 	private String drw_Img;
 	private String Common;
 	private String Remark;
+	private String stockQuantity;
 }
