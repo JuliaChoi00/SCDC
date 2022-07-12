@@ -5,7 +5,7 @@ PUBLIC "//mybatis.org/DTD Mapper 3.0//EN"
 
 <mapper namespace="org.scdc.mapper.ExportMapper">
 
-<!--  1. 목록보기///////////////////////////////-->
+<!--  1-1. 품목목록보기///////////////////////////////-->
 	<select id = "getList" resultType="org.scdc.domain.PartVO">
 		<!-- > 부호를 xml로 인식하지 말라 -->
 		<![CDATA[
@@ -13,28 +13,60 @@ PUBLIC "//mybatis.org/DTD Mapper 3.0//EN"
 		]]>
 	</select>
 	
-<!--  1-1. 목록보기 with page ///////////////////////////////-->	
-	<select id="getListWithPaging" >
-	<!-- > 부호를 xml로 인신하지 말라 -->
+<!--  1-1-1. 품목목록보기 with page ///////////////////////////////-->	
+	<select id="getListWithPaging" resultType="org.scdc.domain.PartVO" >
+	
 		<![CDATA[
-			
+			select partCode, partName, nickName, library, drw_No, drw_Img, common, remark
+			from (select rownum rn, partCode, partName, nickName, library, drw_No, drw_Img, common, remark
+			    from (select * from tbl_Part)
+			    where rownum <=(#{pageNum}*#{amount})	) 
+			where rn >((#{pageNum}-1)*#{amount})
 		]]>
-	</select>
 	
+	</select>
+<!-- 총글 개수 -->	
 	<select id="count" resultType="int">
-		select count(*) from tbl_part		
+		select count(*) from tbl_part
 	</select>
 	
-	<select id="submit" resultType="long">
+	
+<!--  1-2. 재고목록보기  ///////////////////////////////-->	
+	<select id="getStockList" resultType="org.scdc.domain.StockVO" >
+	
+	<![CDATA[ 
+select 
+         stock_no, stock_date, stockQuantity, a.partCode 
+      from tbl_part a, tbl_stock b 
+      where a.partcode=b.partcode
+		]]>
+		
+	</select>
+<!--  1-2-1. 재고목록보기  with page ///////////////////////////////-->	
+	<select id="getStockListWithPaging" resultType="org.scdc.domain.StockVO" >
+	
+	<![CDATA[
+		select stock_no, stock_date, stockQuantity, partCode
+			from (select rownum rn, stock_no, stock_date, stockQuantity, partCode
+			    from (select stock_no, stock_date, stockQuantity, a.partCode 
+      						from tbl_part a, tbl_stock b 
+     				 		where a.partcode=b.partcode)
+			    where rownum <=(#{pageNum}*#{amount})	) 
+			where rn >((#{pageNum}-1)*#{amount})
+		]]>
+		
+	</select>
 
-	</select>
+<!--  1-3. 출고목록보기  ///////////////////////////////-->	
+	<select id="getExportList" resultType="org.scdc.domain.ExportVO" >
 	
-	<select id="quiz1" >
-	
-	</select>
-	
-	<select id="quiz2" >
-
+	<![CDATA[
+	select 
+	      export_no, export_date, exportQuantity, a.partCode 
+	      from tbl_part a, tbl_export b 
+	      where a.partcode=b.partcode
+		]]>
+		
 	</select>
 	
 <!--  2. 상세보기///////////////////////////////-->
@@ -43,13 +75,15 @@ PUBLIC "//mybatis.org/DTD Mapper 3.0//EN"
 
 	</select>
 	
-<!--  3. 글 등록///////////////////////////////-->
+<!--  3. 출고///////////////////////////////-->
 	
 	<insert id="insert">
+		insert into tbl_export(export_no, exportQuantity, partCode)
+   			values(seq_board.nextval, #{exportQuantity},#{partCode})
 
 	</insert>
 	
-<!--  3-1. 글 등록///////////////////////////////-->
+<!--  3-1. 출고///////////////////////////////-->
 	<insert id = "insertSelectKey">
 		<selectKey>
 
@@ -57,16 +91,13 @@ PUBLIC "//mybatis.org/DTD Mapper 3.0//EN"
 
 	</insert>
 	
-<!--  4. 글 수정///////////////////////////////-->
+<!--  4. 재고 업데이트///////////////////////////////-->
 	
 	<update id ="update">
+		update tbl_stock set stockQuantity=#{stockQuantity}-#{exportQuantity}, 
+    	stock_date=sysdate where partCode =#{partCode}
 
 	</update>
 
-<!--  5. 글 삭제///////////////////////////////-->
-	
-	<delete id="delete">
-
-	</delete>
 	
 </mapper>

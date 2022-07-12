@@ -17,7 +17,7 @@
         <div id="page-wrapper" style="min-height: 868px;">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header" align="center">재고 현황 리포트</h1>
+                    <h1 class="page-header" align="center">재고 현황</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -95,35 +95,22 @@
                                 <thead>
                                     <tr>
                                         <th style="text-align:center">품목코드</th>
-                                        <th style="text-align:center">품목명</th>
-                                        <th style="text-align:center">별칭</th>
-                                        <th style="text-align:center">품목구분</th>
-                                        <th style="text-align:center">도면번호</th>
-                                        <th style="text-align:center">도면이미지</th>
-                                        <th style="text-align:center">공용여부</th>
-                                        <th style="text-align:center">품목설명</th>
+                                        <th style="text-align:center">재고일자</th>
                                         <th style="text-align:center">재고수량</th>
-                                        <th style="text-align:center">단가</th>
+                                        <th style="text-align:center">재고번호</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-<c:forEach var="part" items="${report}">                              
+
+<c:forEach var="part" items="${stock}">                              
                                     <tr class="odd gradeX">
                                         <td><c:out value="${part.partCode}"></c:out></td>
-                                        <!--  <a href="/Export/get?partCode=${part.partCode}"></a>-->
-                                        <td><c:out value="${part.partName}"></c:out></td>
-                                        <td><c:out value="${part.nickName}"></c:out></td>
-                                        <td><c:out value="${part.library}"></c:out></td>
-                                        <td><c:out value="${part.drw_No}"></c:out></td>
-                                        <td><c:out value="${part.drw_Img}"></c:out></td>
-                                        <td><c:out value="${part.common}"></c:out></td>
-                                        <td><c:out value="${part.remark}"></c:out></td>
-                                        <td><c:out value="${part.partCode}"></c:out></td>
-                                        <td><c:out value="${part.partCode}"></c:out></td>
+                                        <td><c:out value="${part.stock_date}"></c:out></td>
+                                        <td><c:out value="${part.stockQuantity}"></c:out></td>
+                                        <td><c:out value="${part.stock_no}"></c:out></td>
                                         
                                     </tr>
-</c:forEach>  
-                                
+</c:forEach>                                  
                                    </tbody>
                             </table>
                             <!--  2022.07.11추가  with page bar by JuliaChoi -->
