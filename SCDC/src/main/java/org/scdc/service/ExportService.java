@@ -6,11 +6,23 @@ import org.scdc.domain.ComponentVO;
 import org.scdc.domain.ExportProductVO;
 import org.scdc.domain.PartVO;
 import org.scdc.domain.ProductVO;
+import org.scdc.domain.ReportVO;
 import org.scdc.domain.StockVO;
 import org.springframework.stereotype.Component;
 
 public interface ExportService {
 	
+	//리포트
+	public List<ReportVO> report();
+	
+	//선택한 그룹과 일치하는 품목리스트 가져오기(리포트)
+	public List<ReportVO> getSelectLibrary(String libraryLists);
+	
+	//그룹가져오기 (리포트)
+	public List<PartVO> getLibrary();
+	
+	//전체 재고 정보 가져오기(엑셀)
+	public List<PartVO> makeExcel();
 	
 	//품목 상세보기
 	public PartVO get(int partCode);

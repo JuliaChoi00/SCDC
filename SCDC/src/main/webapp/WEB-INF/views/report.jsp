@@ -17,10 +17,10 @@
 	<%@ include file="../views/includes/nav.jsp"%>
 		<div id="page-wrapper" style="min-height: 868px;">
 			<div class="row"><span style="display: inline-block; width: 45%; margin-right: 2%;">
-				생산품 <select name="productList">
+				분류 <select name="libraryList">
 					   	<option selected>선택</option>
-					   	<c:forEach items="${ getProduct }" var="product">
-					   		<option value=${ product.productcode }>${ product.productname }</option>
+					   	<c:forEach items="${ library }" var="product">
+					   		<option value=${ product.library }>${ product.library }</option>
 					   	</c:forEach>
 					</select>
 	
@@ -74,6 +74,8 @@
 				         <th class="sorting_asc" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 168px;">공용여부</th>
 				         <th class="sorting_asc" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 168px;">품목설명</th>
 				         <th class="sorting_asc" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 168px;">재고수량</th>
+				         <th class="sorting_asc" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 168px;">단가</th>
+				         <th class="sorting_asc" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 168px;">재고금액</th>
 			        </tr>
 				</thead>
 					
@@ -133,12 +135,12 @@
     
     
     <script>
-    	$("select[name=productList]").on("change", function() {
+    	$("select[name=libraryList]").on("change", function() {
     		$.ajax({
-        		url: "/api/page2",
+        		url: "/api/report",
         		type: "get",
         		data: {
-        			"productLists" : $("select[name=productList]").val()
+        			"libraryList" : $("select[name=libraryList]").val()
         		},
         		success: function(data) {
         			
@@ -158,6 +160,8 @@
 	    	                <td>` + data[key].common + `</td>
 	    	                <td>` + data[key].remark + `</td>
 	    	                <td>` + data[key].stockQuantity + `</td>
+	    	                <td>` + data[key].unitPrice + `</td>
+	    	                <td>` + data[key].totalPrice + `</td>
 	                    </tr>`
 	                )
        			}

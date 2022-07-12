@@ -6,6 +6,7 @@ import org.scdc.domain.ComponentVO;
 import org.scdc.domain.ExportProductVO;
 import org.scdc.domain.PartVO;
 import org.scdc.domain.ProductVO;
+import org.scdc.domain.ReportVO;
 import org.scdc.domain.StockVO;
 import org.scdc.mapper.ExportMapper;
 import org.springframework.stereotype.Service;
@@ -68,5 +69,32 @@ public class ExportServiceIml implements ExportService {
 		// TODO Auto-generated method stub
 		return mapper.getSelectProduct(productLists);
 	}
+
+	@Override
+	public List<PartVO> makeExcel() {
+		// TODO Auto-generated method stub
+		return mapper.makeExcel();
+	}
+
+	@Override
+	public List<ReportVO> report() {
+		// TODO Auto-generated method stub
+		return mapper.report();
+	}
+
+	@Override
+	public List<ReportVO> getSelectLibrary(String libraryLists) {
+		// TODO Auto-generated method stub
+		return mapper.getSelectLibrary(libraryLists);
+	}
+
+	@Override
+	public List<PartVO> getLibrary() {
+		// TODO Auto-generated method stub
+		return mapper.getLibrary();
+	}
+
+
+
 
 }

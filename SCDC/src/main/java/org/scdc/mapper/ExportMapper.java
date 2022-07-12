@@ -6,6 +6,7 @@ import org.scdc.domain.ComponentVO;
 import org.scdc.domain.ExportProductVO;
 import org.scdc.domain.PartVO;
 import org.scdc.domain.ProductVO;
+import org.scdc.domain.ReportVO;
 import org.scdc.domain.StockVO;
 
 
@@ -32,4 +33,16 @@ public interface ExportMapper {
 	
 	public List<PartVO> getSelectProduct(long productLists);
 	
+	//전체 재고 정보 가져오기(엑셀)
+	public List<PartVO> makeExcel();
+	
+	//전체 재고금액 정보 가져오기(리포트)
+	public List<ReportVO> report();
+	
+	//선택된 그룹별 품목리스트 가져오기(리포트)
+	public List<ReportVO> getSelectLibrary(String libraryLists);
+	
+	//그룹가져오기(레포트)
+	public List<PartVO> getLibrary();
+
 }//mapper

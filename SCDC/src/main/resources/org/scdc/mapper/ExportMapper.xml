@@ -62,7 +62,7 @@ PUBLIC "//mybatis.org/DTD Mapper 3.0//EN"
 		]]>
 	</select>	
 	
-		<select id="getSelectProduct" resultType="org.scdc.domain.PartVO">
+	<select id="getSelectProduct" resultType="org.scdc.domain.PartVO">
 		<![CDATA[
 		select 
 			distinct a.partcode, a.partname, a.nickname, a.library, a.drw_no, a.drw_img, a.common, a.remark, b.stockQuantity 
@@ -72,8 +72,41 @@ PUBLIC "//mybatis.org/DTD Mapper 3.0//EN"
 		]]>
 	</select>	
 	
+	<!-- 엑셀 만들기 -->
+	<select id = "makeExcel" resultType="org.scdc.domain.PartVO">
+		<![CDATA[
+		select 
+			distinct a.partcode, a.partname, a.nickname, a.library, a.drw_no, a.drw_img, a.common, a.remark, b.stockQuantity 
+		from tbl_part a, tbl_stock b 
+		]]>
+	</select>
 	
+	<!-- 리포트 만들기 -->
+	<select id = "report" resultType="org.scdc.domain.ReportVO">
+		<![CDATA[
+		select 
+			distinct a.partcode, a.partname, a.nickname, a.library, a.drw_no, a.drw_img, a.common, a.remark, b.stockQuantity, c.unitprice, b.stockquantity*c.unitprice as totalPrice
+		from tbl_part a, tbl_stock b, tbl_contract c 
+		where a.partcode=b.partcode
+		]]>
+	</select>
 	
+	<!-- 선택된 그룹별 품목정보 가져오기 (리포트) -->
+		<select id="getSelectLibrary" resultType="org.scdc.domain.ReportVO">
+		<![CDATA[
+		select 
+		    distinct a.partcode, a.partname, a.nickname, a.library, a.drw_no, a.drw_img, a.common, a.remark, b.stockQuantity, c.unitprice, b.stockquantity*c.unitprice as totalPrice
+		from tbl_part a, tbl_stock b, tbl_contract c 
+		where a.partcode=b.partcode
+		AND a.library='#{ libraryLists }'
+		]]>
+	</select>	
+	
+	<select id="getLibrary" resultType="org.scdc.domain.PartVO">
+		<![CDATA[
+		select library, partcode from tbl_part
+		]]>
+	</select>
 	
 	
 <!--	제품코드찾기

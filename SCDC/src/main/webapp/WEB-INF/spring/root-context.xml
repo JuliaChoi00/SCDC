@@ -22,8 +22,8 @@
 <!-- 	<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"></property>
 		<property name="jdbcUrl" value="jdbc:oracle:thin:@localhost:1521:XE"></property>   -->
 		
-		<property name="username" value="SCDC"></property>
-		<property name="password" value="1234"></property>
+		<property name="username" value="k2"></property>
+		<property name="password" value="mit"></property>
 	</bean>
 	
 	<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource">

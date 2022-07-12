@@ -18,7 +18,7 @@ public class JDBCTest {
 
 		Class.forName("oracle.jdbc.driver.OracleDriver");
 		DriverManager.getConnection("jdbc:oracle:thin:@192.168.0.30:1521:XE",
-				"SCDC", "1234");
+				"k2", "mit");
 		log.info("JDBC 연결성공");
 
 		}catch(Exception e) {

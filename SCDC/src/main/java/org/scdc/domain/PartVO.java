@@ -10,7 +10,7 @@ public class PartVO {
 	private String library;
 	private String drw_No;
 	private String drw_Img;
-	private String Common;
-	private String Remark;
+	private String common;
+	private String remark;
 	private String stockQuantity;
 }
