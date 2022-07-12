@@ -17,7 +17,7 @@
         <div id="page-wrapper" style="min-height: 868px;">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header" align="center">재고 현황 리포트</h1>
+                    <h1 class="page-header" align="center">자재 출고</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -91,57 +91,37 @@
                         <!-- /.panel-heading -->
 
                         <div class="panel-body">
+                           <form action="/export/register" method="post">  
                             <table width="100%" class="table table-striped table-bordered table-hover">
                                 <thead>
                                     <tr>
                                         <th style="text-align:center">품목코드</th>
-                                        <th style="text-align:center">품목명</th>
-                                        <th style="text-align:center">별칭</th>
-                                        <th style="text-align:center">품목구분</th>
-                                        <th style="text-align:center">도면번호</th>
-                                        <th style="text-align:center">도면이미지</th>
-                                        <th style="text-align:center">공용여부</th>
-                                        <th style="text-align:center">품목설명</th>
+                                        <th style="text-align:center">재고일자</th>
                                         <th style="text-align:center">재고수량</th>
-                                        <th style="text-align:center">단가</th>
+                                        <th style="text-align:center">출고량</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-<c:forEach var="part" items="${report}">                              
+
+<c:forEach var="part" items="${export}">                              
                                     <tr class="odd gradeX">
                                         <td><c:out value="${part.partCode}"></c:out></td>
-                                        <!--  <a href="/Export/get?partCode=${part.partCode}"></a>-->
-                                        <td><c:out value="${part.partName}"></c:out></td>
-                                        <td><c:out value="${part.nickName}"></c:out></td>
-                                        <td><c:out value="${part.library}"></c:out></td>
-                                        <td><c:out value="${part.drw_No}"></c:out></td>
-                                        <td><c:out value="${part.drw_Img}"></c:out></td>
-                                        <td><c:out value="${part.common}"></c:out></td>
-                                        <td><c:out value="${part.remark}"></c:out></td>
-                                        <td><c:out value="${part.partCode}"></c:out></td>
-                                        <td><c:out value="${part.partCode}"></c:out></td>
+                                        <td><c:out value="${part.stock_date}"></c:out></td>
+                                        <td><c:out value="${part.stockQuantity}"></c:out></td>
+                                        <%-- <td><c:out value="${part.stockQuantity}"></c:out></td> --%>
+                                     
+                                       <td>
+                                        <input class="form-control" placeholder="출고량을 적어주세요" type="text" name="exportQuantity" required>
+                                       </td>
                                         
                                     </tr>
-</c:forEach>  
-                                
+ </c:forEach>                                  
                                    </tbody>
-                            </table>
-                            <!--  2022.07.11추가  with page bar by JuliaChoi -->
-                         <c:if test = "${pageMaker.prev}">
-                            	<a href="/export/report?pageNum=${pageMaker.startPage-1 }&amount=${pageMaker.cri.amount}"> prev </a>
-                            </c:if>
-
-                            <!-- num는 페이지 영역 -->
-                           <c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="num">
-                            	&nbsp;&nbsp; 
-                            	<a href="/export/report?pageNum=${num}&amount=${pageMaker.cri.amount}">${num}</a> 
-                            	&nbsp;&nbsp;&nbsp;
-                            	
-                            </c:forEach>
-                            
-                            <c:if test = "${pageMaker.next}">
-                            	<a href="/export/report?pageNum=${pageMaker.endPage+1 }&amount=${pageMaker.cri.amount}"> next </a>
-                            </c:if>
+                            </table>  
+          	                        	
+                      	<input type="submit" class="btn btn-primary" value="초기화" onclick='btn_click("main");'>
+                      	<input type="reset" class="btn btn-primary" value="저장" onclick='btn_click("stock");'>
+                     </form>                      
 
                         </div>
                         <!-- /.panel-body -->
@@ -152,28 +132,6 @@
             </div>
         </div>
         <!-- /#page-wrapper -->
-                              <!-- Modal -->
-                            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                            <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-                                        </div>
-                                        <div class="modal-body">
-                                        <!-- 2022.06.13추가 -->
-                                            ${bno}번 글이 등록되었습니다.
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                        </div>
-                                    </div>
-                                    <!-- /.modal-content -->
-                                </div>
-                                <!-- /.modal-dialog -->
-                            </div>
-                            <!-- /.modal -->
-
 </div>
 
     <!-- Bootstrap Core JavaScript -->
@@ -187,40 +145,12 @@
 
     <!-- Page-Level Demo Scripts - Tables - Use for reference -->
 
-<!-- 2022-06-13 추가 -->
 <script>
-//입력된 글번호 알려주기
-//var bno="${param.bno}";
-var partCode="${partCode}";//읽히는 순서 page-> request->session->application
-var state="${state}";
-console.log("등록된 글 번호는 : "+bno);
-
-//<!-- 2022-06-14 추가 ,모달창 뒤로가기 할 때 안띄움-->
-//알고있어야 하는 내용
-//1.history.replaceState(data,title,url) 	히스토리 상태값을 변경해주는 메소드
-//2.history.state	 히스토리 상태값을 읽는것(history.replaceState()미사용시 null)
-if(!history.state){//javascript에서는 null이면 false
-	console.log("히스토리 상태값이 없다");
-}else{
-	console.log("히스토리 상태값이 있다.");
-}//크롬에서 바로전 뒤로 가기 일때는 변경된 내용이 확인 안된다.(why? 크롬에서 바로전 바로가기일때는 
-		//내부적으로 모달창 같은게 동작안되게 뭔가 작업을 해놔서)
-
-console.log("현재상태값:" +state);
-if(bno!="" && !history.state){//글번호가 있고
-	$("#myModal").modal("show");
-}
-//<!-- 2022-06-14 추가 //var state 추가 --> 
-if(state=="remove" && !history.state){
-	$(".modal-body").text("삭제가 정상적으로 처리되었습니다.");
-	$("#myModal").modal("show");
-}else if(state=="modify" && !history.state){
-	$(".modal-body").text("수정이 정상적으로 처리되었습니다..");
-	$("#myModal").modal("show");
-}
-
-history.replaceState({},null,null);
-
+    $(document).ready(function() {
+        $('#dataTables-example').DataTable({
+            responsive: true
+        });
+    });
 </script>
 
 </body>
