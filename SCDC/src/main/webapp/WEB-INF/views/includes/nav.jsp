@@ -12,7 +12,7 @@
                </button>
                 <a class="navbar-brand" href="index.html">조달구매시스템</a>
             </div>
-          
+                    
  <!-- navbar-top  2022.07.05 by JuliaChoi -->
             <!-- /.navbar-header -->
 
@@ -124,10 +124,10 @@
                            <a href="#"><i class="fa fa-wrench fa-fw"></i> 자재출고<span class="fa arrow"></span></a>
                            <ul class="nav nav-second-level">
                                <li>
-                                   <a href="#">자재 현황</a>
+                                   <a href="/export/stock">자재 현황</a>
                                </li>
                                <li>
-                                   <a href="#">자재 출고</a>
+                                   <a href="/export/export">자재 출고</a>
                                </li>
                                <li>
                                    <a href="#">재고 금액 <span class="fa arrow"></span></a>
@@ -136,7 +136,7 @@
                                            <a href="#">대시보드</a>
                                        </li>
                                        <li>
-                                           <a href="#">재고리포트</a>
+                                           <a href="/report">재고리포트</a>
                                        </li>
                                    </ul>
                                    <!-- /.nav-third-level -->

@@ -47,19 +47,25 @@
            ,dayNames: ['일요일','월요일','화요일','수요일','목요일','금요일','토요일'] //달력의 요일 Tooltip
            ,minDate: "-5Y" //최소 선택일자(-1D:하루전, -1M:한달전, -1Y:일년전)
            ,maxDate: "+5y" //최대 선택일자(+1D:하루후, -1M:한달후, -1Y:일년후)  
-       });                    
+       });       
+       
+       //input을 datepicker로 선언
+       $("#fromDate").datepicker();
+       $("toDate").datepicker();
        
        //초기값을 오늘 날짜로 설정해줘야 합니다.
        $('.datepicker').datepicker('setDate', 'today'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)            
+       //To의 초기값을 내일로 설정
+       $("#toDate").datepicker('setDate', '+1D');	
    });
 </script>	
 
 		&nbsp;&nbsp;&nbsp;&nbsp;		
 	<!-- 링크가 파일이름이 되기 때문에 엑셀파일의 확장자를
 	뒤에 붙이는 것이 좋습니다-->
-	<a href="excel">엑셀파일 만들기</a> &nbsp;&nbsp;&nbsp;&nbsp;
+	<a href="excelReport">엑셀파일 만들기</a> &nbsp;&nbsp;&nbsp;&nbsp;
 	<!-- 엑셀 파일을 읽어서 출력하는 요청 -->
-    <a href="excelread">엑셀파일 읽기</a><br/>	
+    <a href="excelreadReport">엑셀파일 읽기</a><br/>	
     		
 		<div class="col-sm-12">
 			<table width="100%" class="table table-striped table-bordered table-hover dataTable no-footer dtr-inline productTable" id="dataTables-example" role="grid" aria-describedby="dataTables-example_info" style="width: 200%;">
@@ -140,7 +146,7 @@
         		url: "/api/report",
         		type: "get",
         		data: {
-        			"libraryList" : $("select[name=libraryList]").val()
+        			"libraryLists" : $("select[name=libraryList]").val()
         		},
         		success: function(data) {
         			
@@ -163,6 +169,7 @@
 	    	                <td>` + data[key].unitPrice + `</td>
 	    	                <td>` + data[key].totalPrice + `</td>
 	                    </tr>`
+
 	                )
        			}
         		}

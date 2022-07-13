@@ -54,11 +54,21 @@ public class LoginController {
         return "redirect:login";
     }
     
-    @RequestMapping({"/page2"})
+    //메인페이지(전체재고)
+    @RequestMapping("/page2")
     public void page2(Model model){
-		model.addAttribute("getList",service.getList());
+		model.addAttribute("getList",service.getList1());
 		model.addAttribute("getProduct",service.getProduct());
 		System.out.println(service.getProduct());
+    }
+    
+    //리포트
+	@RequestMapping("/report")
+    public void report(Model model){
+		model.addAttribute("report",service.report());
+		model.addAttribute("library",service.getLibrary());
+		System.out.println(service.getLibrary());		
+
     }
     
 	@RequestMapping("/exportPart")
@@ -86,15 +96,6 @@ public class LoginController {
 		System.out.println("잘받아옵니까? :" + service.getListFromProduct());
 		return "/doExportPart";
 	}
-	
-    //리포트
-	@RequestMapping("/report")
-    public void report(Model model){
-		model.addAttribute("report",service.report());
-		model.addAttribute("library",service.getLibrary());
-		System.out.println(service.getLibrary());
-
-    }
-   
+	 
     
 }
