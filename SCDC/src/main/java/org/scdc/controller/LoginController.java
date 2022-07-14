@@ -57,7 +57,7 @@ public class LoginController {
 	@GetMapping("/export/report")
     public String report(Model model){
 		System.out.println(service);
-		model.addAttribute("report",service.getList());
+		model.addAttribute("report",service.getList1());
 		model.addAttribute("count",service.count());
 		return "/export/report";
 
