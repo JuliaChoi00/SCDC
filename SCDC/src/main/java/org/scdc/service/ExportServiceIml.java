@@ -1,7 +1,6 @@
 package org.scdc.service;
 
 import java.util.List;
-
 import org.scdc.domain.Criteria;
 import org.scdc.domain.ExportVO;
 import org.scdc.domain.PartVO;
@@ -10,19 +9,25 @@ import org.scdc.mapper.ExportMapper;
 import org.springframework.stereotype.Service;
 
 import lombok.AllArgsConstructor;
+import lombok.extern.log4j.Log4j;
 
 @Service
 @AllArgsConstructor
+@Log4j
 public class ExportServiceIml implements ExportService {
 	private ExportMapper mapper;
 
 	//前格  惑技焊扁
 	@Override
-	public PartVO get(int partCode) {
+	public PartVO get1(int partCode) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+	@Override
+	public List<Integer> getPartCodeList(){
+		log.info("前格内靛府胶飘");
+		return mapper.getPartCodeList();
+	}
 	//1-1.格废焊扁
 	@Override
 	public List<PartVO> getList1() {
@@ -59,10 +64,16 @@ public class ExportServiceIml implements ExportService {
 		return mapper.getExportList();
 		
 	}
-	
+	////////////////////////////////
 	//2. 前格 惑技焊扁
 	@Override
-	public PartVO read(int partCode) {
+	public PartVO read1(int partCode) {
+		return mapper.read1(partCode);
+	}
+	//2-1. 前格 惑技焊扁
+	@Override
+	public List<Integer> get(int partCode) {
+		// TODO Auto-generated method stub
 		return mapper.read(partCode);
 	}
 
@@ -90,4 +101,6 @@ public class ExportServiceIml implements ExportService {
 		// TODO Auto-generated method stub
 		return mapper.count();
 	}
+
+
 }

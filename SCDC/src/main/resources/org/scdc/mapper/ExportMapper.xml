@@ -4,6 +4,15 @@ PUBLIC "//mybatis.org/DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 
 <mapper namespace="org.scdc.mapper.ExportMapper">
+<!-- 재고있는 품목코드 리스트 -->
+	<select id = "getPartCodeList" resultType="Integer">
+		<!-- > 부호를 xml로 인식하지 말라 -->
+		<![CDATA[
+	select b.partCode
+      from tbl_stock b left outer join tbl_export c
+      on b.partcode=c.partcode
+		]]>
+	</select>
 
 <!--  1-1. 품목목록보기///////////////////////////////-->
 	<select id = "getList" resultType="org.scdc.domain.PartVO">
@@ -25,6 +34,7 @@ PUBLIC "//mybatis.org/DTD Mapper 3.0//EN"
 		]]>
 	
 	</select>
+	
 <!-- 총글 개수 -->	
 	<select id="count" resultType="int">
 		select count(*) from tbl_part
@@ -36,9 +46,8 @@ PUBLIC "//mybatis.org/DTD Mapper 3.0//EN"
 	
 	<![CDATA[ 
 select 
-         stock_no, stock_date, stockQuantity, a.partCode 
-      from tbl_part a, tbl_stock b 
-      where a.partcode=b.partcode
+         stock_no, stock_date, stockQuantity, partCode 
+      from tbl_stock
 		]]>
 		
 	</select>
@@ -69,17 +78,11 @@ select
 		
 	</select>
 	
-<!--  2. 상세보기///////////////////////////////-->
-
-	<select id="read" >
-
-	</select>
-	
 <!--  3. 출고///////////////////////////////-->
 	
 	<insert id="insert">
-		insert into tbl_export(export_no, exportQuantity, partCode)
-   			values(seq_board.nextval, #{exportQuantity},#{partCode})
+   		insert into tbl_export(export_no,exportQuantity,partCode) 
+   			values(export_seq.nextval,#{exportQuantity},#{partCode})
 
 	</insert>
 	

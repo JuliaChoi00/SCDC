@@ -45,24 +45,15 @@ public class LoginController {
         return "redirect:login";
     }
     
+	private ExportService service;     
     @RequestMapping("page2")
-
-    public String page2(){
-
+    public String page2(Model model){
+    	System.out.println(service);
+    	model.addAttribute("report",service.getList1());
     return "/page2";
 
     }
     
-	private ExportService service;
-	@GetMapping("/export/report")
-    public String report(Model model){
-		System.out.println(service);
-		model.addAttribute("report",service.getList());
-		model.addAttribute("count",service.count());
-		return "/export/report";
-
-    }
-   
     @RequestMapping(value="excel.xls",method=RequestMethod.GET)
 	public String excel(Model model, HttpServletResponse response) {
 		//엑셀 파일에 출력할 데이터 생성

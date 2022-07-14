@@ -11,7 +11,7 @@ public interface ExportService {
 	
 	
 	//품목 상세보기
-	public PartVO get(int partCode);
+	public PartVO get1(int partCode);
 	
 	//목록보기
 	public List<PartVO> getList1();
@@ -29,7 +29,12 @@ public interface ExportService {
 	public List<ExportVO> getExportList();
 	
 	//2. 품목 상세보기
-	public PartVO read(int partCode);
+	public PartVO read1(int partCode);
+	
+	//2-1. 품목 상세보기
+	public List<Integer> get(int PartCode);
+	
+	public List<Integer> getPartCodeList();
 
 	////////////////////////////////
 

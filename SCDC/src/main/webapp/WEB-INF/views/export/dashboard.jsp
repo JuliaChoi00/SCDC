@@ -17,7 +17,7 @@
         <div id="page-wrapper" style="min-height: 868px;">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header" align="center">자재 출고</h1>
+                    <h1 class="page-header" align="center">재고 현황 리포트</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -91,38 +91,16 @@
                         <!-- /.panel-heading -->
 
                         <div class="panel-body">
-                           <form action="/export/export" method="post">  
-                            <table width="100%" class="table table-striped table-bordered table-hover">
-                                <thead>
-                                    <tr>
-                                        <th style="text-align:center">품목코드</th>
-                                        <th style="text-align:center">재고일자</th>
-                                        <th style="text-align:center">재고수량</th>
-                                        <th style="text-align:center">출고량</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-
-<c:forEach var="part" items="${stock}">                              
-                                    <tr class="odd gradeX">
-                                        <td><c:out value="${part.partCode}"></c:out></td>
-                                        <td><c:out value="${part.stock_date}"></c:out></td>
-                                        <td><c:out value="${part.stockQuantity}"></c:out></td>
-                                     
-                                       <td>
-                                      
-                                        <input class="form-control" placeholder="출고량을 적어주세요" type="number" name="exportQuantity" required>
-                                       </td>
-                                        
-                                    </tr>
- </c:forEach>                                  
-                                   </tbody>
-                            </table>  
-          	                        	
-	                        	<input type="submit" class="btn btn-primary" value="출고">
-	                        	<input type="reset" class="btn btn-primary" value="다시쓰기">
-                     </form>                      
-
+                            
+                            
+                            
+                            
+                            
+                            gsalkjaslkjlkagj
+                            
+                            
+                            
+                            
                         </div>
                         <!-- /.panel-body -->
                     </div>
@@ -144,14 +122,6 @@
     <script src="/resources/dist/js/sb-admin-2.js"></script>
 
     <!-- Page-Level Demo Scripts - Tables - Use for reference -->
-
-<script>
-    $(document).ready(function() {
-        $('#dataTables-example').DataTable({
-            responsive: true
-        });
-    });
-</script>
 
 </body>
 
