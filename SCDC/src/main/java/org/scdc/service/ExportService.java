@@ -9,11 +9,15 @@ import org.scdc.domain.ExportVO;
 import org.scdc.domain.PartVO;
 import org.scdc.domain.ProductVO;
 import org.scdc.domain.ReportVO;
+import org.scdc.domain.RequestPartVO;
 import org.scdc.domain.StockVO;
 import org.springframework.stereotype.Component;
 import org.scdc.domain.StockVO;
 
 public interface ExportService {
+	
+	//출고요청하기
+	public void requestPart(RequestPartVO vo);
 	
 	//리포트
 	public List<ReportVO> report();

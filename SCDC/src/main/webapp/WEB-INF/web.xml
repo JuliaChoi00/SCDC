@@ -48,6 +48,11 @@
 					<servlet-name>appServlet</servlet-name>	
 			</filter-mapping>	
 			<!-- 한글설정 END -->
+	
+	<!-- 시작페이지 설정 -->		
+	<welcome-file-list>
+		<welcome-file>/WEB-INF/views/login.jsp</welcome-file>
+	</welcome-file-list>
 
 
 </web-app>

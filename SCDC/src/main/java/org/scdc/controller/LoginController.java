@@ -96,6 +96,12 @@ public class LoginController {
 		System.out.println("잘받아옵니까? :" + service.getListFromProduct());
 		return "/doExportPart";
 	}
+	
+	//테스트용
+	@RequestMapping("/test")
+	public void test() {
+		
+	}
 	 
     
 }

@@ -160,11 +160,12 @@ PUBLIC "//mybatis.org/DTD Mapper 3.0//EN"
 	</select>
 	 																		-->	
 	
-<!--  2. 상세보기///////////////////////////////-->
+<!--  출고요청하기 -->
 
-	<select id="read" >
-
-	</select>
+ 	<insert id="requestPart">
+ 		insert into tbl_process
+ 		values(export_no.nextval,#{req_no},#{partCode},#{process},#{exportQuantity},#{makeDate})
+ 	</insert>
 	
 <!--  3. 출고///////////////////////////////-->
 	

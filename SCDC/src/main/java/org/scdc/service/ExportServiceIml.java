@@ -9,6 +9,7 @@ import org.scdc.domain.ExportVO;
 import org.scdc.domain.PartVO;
 import org.scdc.domain.ProductVO;
 import org.scdc.domain.ReportVO;
+import org.scdc.domain.RequestPartVO;
 import org.scdc.domain.StockVO;
 import org.scdc.mapper.ExportMapper;
 import org.springframework.stereotype.Service;
@@ -158,5 +159,12 @@ public class ExportServiceIml implements ExportService {
 		// TODO Auto-generated method stub
 		return mapper.makeReportExcel();
 	}
+
+	@Override
+	public void requestPart(RequestPartVO vo) {
+		mapper.requestPart(vo);
+		
+	}
+
 
 }

@@ -10,6 +10,7 @@ import org.scdc.domain.ExportVO;
 import org.scdc.domain.PartVO;
 import org.scdc.domain.ProductVO;
 import org.scdc.domain.ReportVO;
+import org.scdc.domain.RequestPartVO;
 import org.scdc.domain.StockVO;
 
 
@@ -85,5 +86,8 @@ public int update(StockVO vo);
 	
 	//그룹가져오기(레포트)
 	public List<PartVO> getLibrary();
+
+	//출고요청하기
+	public List<RequestPartVO> requestPart(RequestPartVO vo);
 
 }//mapper

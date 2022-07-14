@@ -124,7 +124,7 @@
                            <a href="#"><i class="fa fa-wrench fa-fw"></i> 자재출고<span class="fa arrow"></span></a>
                            <ul class="nav nav-second-level">
                                <li>
-                                   <a href="/export/stock">자재 현황</a>
+                                   <a href="/page2">자재 현황</a>
                                </li>
                                <li>
                                    <a href="/export/export">자재 출고</a>
@@ -141,9 +141,9 @@
                                    </ul>
                                    <!-- /.nav-third-level -->
                                </li>
-                               <li>
-                                   <a href="#">잔재입고</a>
-                               </li>
+                     		   <li>
+                                   <a href="/export/requestPart">출고요청</a>
+                               </li> 		 						
                            </ul>
                            <!-- /.nav-second-level -->
                        </li>
