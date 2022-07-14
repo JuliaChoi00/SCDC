@@ -3,7 +3,6 @@ package org.scdc.controller;
 import org.scdc.domain.Criteria;
 import org.scdc.domain.ExportVO;
 import org.scdc.domain.PageDTO;
-import org.scdc.domain.PartVO;
 import org.scdc.domain.StockVO;
 import org.scdc.service.ExportService;
 import org.springframework.stereotype.Controller;
@@ -16,6 +15,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 
+
 @Controller
 @RequestMapping("export/*")
 @Log4j
@@ -25,22 +25,32 @@ class ExportController {
 	
 	private ExportService service;
 	
+	
 	@GetMapping("/export/export")
-    public String export(Model model){
-		System.out.println(service);
+	public void export(Model model) {
+		model.addAttribute("stock",service.getStockList());
+	}
+	
+	@PostMapping("/export/export")
 		
-		model.addAttribute("export",service.getStockList());
-		return "/export/export";
+	    public String export(int[] exportQuantity, ExportVO vo, Model model,RedirectAttributes rttr){
+		
+				int[] partCodeArray = service.getPartCodeList().stream().mapToInt(i->i).toArray();
+					
+					for(int i = 0; i < partCodeArray.length;i++) {
+						System.out.println("partcod: "+ partCodeArray[i]);
+						vo.setPartCode(partCodeArray[i]);
+						System.out.println("exportQantity"+exportQuantity[i]);
+						vo.setExportQuantity(exportQuantity[i]);
+						service.register(vo);
+					}
+					rttr.addFlashAttribute("export_date",vo.getExport_date());//출고날자 전송
+		return "redirect:/export/report"; //주의 :새로운 url 요청
     }
 	
-//	 rttr 추가 /리다이렉트시 사용
-	@PostMapping("/export/register")
-	public String register(ExportVO vo, RedirectAttributes rttr) {
-		log.info("출고 요청");
-		service.register(vo);
-		rttr.addFlashAttribute("partCode",vo.getPartCode());//입력된 글번호 전송
-		//Flash로 전송하게 되면 내부적으로 세션으로 처리됨 
-		return "redirect:/board/export"; //주의 /board/list.jsp가 아님 새로운 url 요청이다
+	@GetMapping({"export/get","/export/modify"})
+	public void get(int partCode,Model model) {
+		model.addAttribute("stock",service.get(partCode));
 	}
 	
 //	 rttr 추가 /리다이렉트시 사용
@@ -52,6 +62,13 @@ class ExportController {
 		return "redirect:/export/dashboard";
 	}
 	 
+	@GetMapping("/export/dashboard")
+    public String dashboard(Model model){
+		System.out.println(service);
+		
+	//	model.addAttribute("export",service.getStockList());
+		return "/export/dashboard";
+    }
 	 
 	@GetMapping("/export/stock")
     public String stock(Model model,Criteria cri){
