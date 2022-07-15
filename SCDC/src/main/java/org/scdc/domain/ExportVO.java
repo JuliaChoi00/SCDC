@@ -10,4 +10,5 @@ public class ExportVO {
 	private Date export_date;
 	private int exportQuantity;
 	private int partCode;
+	
 }

@@ -4,6 +4,15 @@ PUBLIC "//mybatis.org/DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 
 <mapper namespace="org.scdc.mapper.ExportMapper">
+<!-- 재고있는 품목코드 리스트 -->
+	<select id = "getPartCodeList" resultType="Integer">
+		<!-- > 부호를 xml로 인식하지 말라 -->
+		<![CDATA[
+	select b.partCode
+      from tbl_stock b left outer join tbl_export c
+      on b.partcode=c.partcode
+		]]>
+	</select>
 
 <!--  1-1. 품목목록보기///////////////////////////////-->
 	<select id = "getList" resultType="org.scdc.domain.PartVO">
@@ -28,6 +37,7 @@ PUBLIC "//mybatis.org/DTD Mapper 3.0//EN"
 		]]>
 	
 	</select>
+	
 <!-- 총글 개수 -->	
 	<select id="count" resultType="int">
 		select count(*) from tbl_part
@@ -52,6 +62,7 @@ PUBLIC "//mybatis.org/DTD Mapper 3.0//EN"
 		]]>
 	</select>
 	
+	<!-- 선택된 제고목록 가져오기 -->
 	<select id="getSelectList" resultType="org.scdc.domain.PartVO">
 		<![CDATA[
 		select 
@@ -66,9 +77,9 @@ PUBLIC "//mybatis.org/DTD Mapper 3.0//EN"
 	
 	<![CDATA[ 
 		select 
-         stock_no, stock_date, stockQuantity, a.partCode 
+         b.stock_no, b.stock_date, b.stockQuantity, a.partCode 
       from tbl_part a, tbl_stock b 
-      where a.partcode=b.partcode
+      where a.partCode=b.partCode
 		]]>
 		
 	</select>
@@ -107,17 +118,22 @@ PUBLIC "//mybatis.org/DTD Mapper 3.0//EN"
 	<select id = "makeExcel" resultType="org.scdc.domain.PartVO">
 		<![CDATA[
 		select 
-			distinct a.partcode, a.partname, a.nickname, a.library, a.drw_no, a.drw_img, a.common, a.remark, b.stockQuantity 
-		from tbl_part a, tbl_stock b 
+			distinct a.partcode, a.partname, a.nickname, a.library, a.drw_no, a.drw_img, a.common, a.remark, sum(ware_quantity)
+		from tbl_part a, tbl_stock b, warehousing c, tbl_export d 
 		]]>
 	</select>
 	
 	<!-- 리포트엑셀 만들기 -->
 	<select id = "makeReportExcel" resultType="org.scdc.domain.ReportVO">
 		<![CDATA[
-		select 
-			distinct a.partcode, a.partname, a.nickname, a.library, a.drw_no, a.drw_img, a.common, a.remark, b.stockQuantity, c.unitprice, b.stockquantity*c.unitprice as totalPrice
-		from tbl_part a, tbl_stock b, tbl_contract c
+		select distinct a.partcode, partname, library, common, process, remark, (sum(ware_quantity)-sum(exportQuantity)) as total, unitPrice, total*unitPrice 
+		from tbl_part a
+		join tbl_process b on a.partcode=b.partcode
+		join tbl_export d on a.partcode=d.partcode
+		join tbl_contract f on f.partcode=a.partcode
+		join purchase_order e on e.contract_num=f.contractno
+		join WAREHOUSING c on c.order_num=e.order_num
+		group by  a.partcode, a.partname, a.nickname, a.library, b.process, a.common, a.remark
 		]]>
 	</select>
 	
@@ -164,14 +180,15 @@ PUBLIC "//mybatis.org/DTD Mapper 3.0//EN"
 
  	<insert id="requestPart">
  		insert into tbl_process
- 		values(export_no.nextval,#{req_no},#{partCode},#{process},#{exportQuantity},#{makeDate})
+ 		values(export_no.nextval,#{req_no},#{partCode},#{process},#{requestQuantity},#{makeDate})
  	</insert>
 	
+
 <!--  3. 출고///////////////////////////////-->
 	
 	<insert id="insert">
-		insert into tbl_export(export_no, exportQuantity, partCode)
-   			values(seq_board.nextval, #{exportQuantity},#{partCode})
+   		insert into tbl_export(export_no,exportQuantity,partCode) 
+   			values(export_seq.nextval,#{exportQuantity},#{partCode})
 
 	</insert>
 	

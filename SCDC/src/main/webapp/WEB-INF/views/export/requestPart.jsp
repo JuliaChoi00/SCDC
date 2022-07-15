@@ -39,8 +39,15 @@
 							<td><input type="int" class="odd gradeX" name="req_no"></td>			
 							<td><input type="int" class="odd gradeX" name="partCode"></td>			
 							<td><input type="text" class="odd gradeX" name="process"></td>			
-							<td><input type="int" class="odd gradeX" name="exportQuantity"></td>			
-							<td><input type="int" class="odd gradeX" name="makeDate"></td>			
+							<td><input type="text" class="odd gradeX" name="makeDate"></td>
+							<td><input type="int" class="odd gradeX" name="requestQuantity"></td>												
+						</tr>
+						<tr>
+							<td><input type="int" class="odd gradeX" name="req_no"></td>			
+							<td><input type="int" class="odd gradeX" name="partCode"></td>			
+							<td><input type="text" class="odd gradeX" name="process"></td>			
+							<td><input type="text" class="odd gradeX" name="makeDate"></td>
+							<td><input type="int" class="odd gradeX" name="requestQuantity"></td>												
 						</tr>
 					</tbody>
 					
@@ -67,7 +74,7 @@
 					<td><input type="int" class="odd gradeX" name="req_no"></td>			
 					<td><input type="int" class="odd gradeX" name="partCode"></td>			
 					<td><input type="text" class="odd gradeX" name="process"></td>			
-					<td><input type="int" class="odd gradeX" name="exportQuantity"></td>			
+					<td><input type="int" class="odd gradeX" name="requestQuantity"></td>			
 					<td><input type="int" class="odd gradeX" name="makeDate"></td>			
 				</tr>");
 		});

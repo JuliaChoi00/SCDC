@@ -1,5 +1,7 @@
 package org.scdc.domain;
 
+import java.util.Date;
+
 import lombok.Data;
 
 @Data
@@ -7,6 +9,6 @@ public class StockVO {
 	private int stock_no;
 	private int partCode;
 	private int stockQuantity;
-	private int stock_date;
+	private Date stock_date;
 
 }

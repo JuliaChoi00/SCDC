@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.scdc.domain.ComponentVO;
 import org.scdc.domain.ExportProductVO;
+
 import org.scdc.domain.Criteria;
 import org.scdc.domain.ExportVO;
 import org.scdc.domain.PartVO;
@@ -15,19 +16,27 @@ import org.scdc.mapper.ExportMapper;
 import org.springframework.stereotype.Service;
 
 import lombok.AllArgsConstructor;
+import lombok.extern.log4j.Log4j;
 
 @Service
 @AllArgsConstructor
+@Log4j
 public class ExportServiceIml implements ExportService {
 	private ExportMapper mapper;
 
 	//ǰ��  �󼼺���
 	@Override
-	public PartVO get(int partCode) {
+	public PartVO get1(int partCode) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	//1-1.��Ϻ���
+	@Override
+	public List<Integer> getPartCodeList(){
+		log.info("ǰ���ڵ帮��Ʈ");
+		return mapper.getPartCodeList();
+	}
 	//1-1.��Ϻ���
 	@Override
 	public List<PartVO> getList1() {
@@ -66,8 +75,16 @@ public class ExportServiceIml implements ExportService {
 	}
 	
 	//2. ǰ�� �󼼺���
+	////////////////////////////////
+	//2. ǰ�� �󼼺���
 	@Override
-	public PartVO read(int partCode) {
+	public PartVO read1(int partCode) {
+		return mapper.read1(partCode);
+	}
+	//2-1. ǰ�� �󼼺���
+	@Override
+	public List<Integer> get(int partCode) {
+		// TODO Auto-generated method stub
 		return mapper.read(partCode);
 	}
 
@@ -161,10 +178,11 @@ public class ExportServiceIml implements ExportService {
 	}
 
 	@Override
-	public void requestPart(RequestPartVO vo) {
+	public void request(RequestPartVO vo) {
+		// TODO Auto-generated method stub
 		mapper.requestPart(vo);
-		
 	}
 
+		
 
 }

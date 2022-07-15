@@ -17,8 +17,8 @@ import org.scdc.domain.StockVO;
 public interface ExportService {
 	
 	//출고요청하기
-	public void requestPart(RequestPartVO vo);
-	
+	public void request(RequestPartVO vo);
+
 	//리포트
 	public List<ReportVO> report();
 	
@@ -35,7 +35,7 @@ public interface ExportService {
 	public List<ReportVO> makeReportExcel();
 	
 	//품목 상세보기
-	public PartVO get(int partCode);
+	public PartVO get1(int partCode);
 	
 	//목록보기
 	public List<PartVO> getList1();
@@ -53,7 +53,12 @@ public interface ExportService {
 	public List<ExportVO> getExportList();
 	
 	//2. 품목 상세보기
-	public PartVO read(int partCode);
+	public PartVO read1(int partCode);
+	
+	//2-1. 품목 상세보기
+	public List<Integer> get(int PartCode);
+	
+	public List<Integer> getPartCodeList();
 
 	////////////////////////////////
 

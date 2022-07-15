@@ -68,40 +68,7 @@ public class LoginController {
 		model.addAttribute("report",service.report());
 		model.addAttribute("library",service.getLibrary());
 		System.out.println(service.getLibrary());		
+	}    
 
-    }
-    
-	@RequestMapping("/exportPart")
-	public void exportPart(Model model) {
-
-	}
-	
-	//냉장고 품목출고
-//	@RequestMapping("/doExportPart/냉장고")
-//	public String doExportPartRefrigerator(Model model) {
-//		model.addAttribute("getListFromRefrigerator",service.getListFromRefrigerator());
-//		return "/doExportPart";
-//	}
-	
-	//제품코드찾기
-//	@RequestMapping("/doExportPart/{string}/get")
-//	public void get(@PathVariable("string") String string, int productCode, Model model) {
-//		model.addAttribute("productCode",service.getProductCode(productCode));
-//		System.out.println("/get 가져오는지 확인" + service.getProductCode(productCode));
-//	}
-	
-	@GetMapping("/doExportPart/{productName}")
-	public String doExportPart(@PathVariable("productName") String productName, Model model) {
-		model.addAttribute("getListFromProduct", service.getListFromProduct());
-		System.out.println("잘받아옵니까? :" + service.getListFromProduct());
-		return "/doExportPart";
-	}
-	
-	//테스트용
-	@RequestMapping("/test")
-	public void test() {
-		
-	}
-	 
-    
+	     
 }

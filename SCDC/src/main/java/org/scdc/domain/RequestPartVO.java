@@ -12,5 +12,6 @@ public class RequestPartVO {
 	public int partCode;
 	public String process;
 	public int requestQuantity;
-	public Date makeDate;
+	public String makeDate;
+	
 }
