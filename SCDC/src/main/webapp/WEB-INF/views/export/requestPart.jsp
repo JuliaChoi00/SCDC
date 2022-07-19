@@ -37,15 +37,8 @@
 					<tbody>           
 						<tr>
 							<td><input type="int" class="odd gradeX" name="req_no"></td>			
-							<td><input type="int" class="odd gradeX" name="partCode"></td>			
-							<td><input type="text" class="odd gradeX" name="process"></td>			
-							<td><input type="text" class="odd gradeX" name="makeDate"></td>
-							<td><input type="int" class="odd gradeX" name="requestQuantity"></td>												
-						</tr>
-						<tr>
-							<td><input type="int" class="odd gradeX" name="req_no"></td>			
-							<td><input type="int" class="odd gradeX" name="partCode"></td>			
-							<td><input type="text" class="odd gradeX" name="process"></td>			
+							<td><input type="text" class="odd gradeX" name="partCode"></td>			
+							<td><input type="text" class="odd gradeX" name="materialProcess"></td>			
 							<td><input type="text" class="odd gradeX" name="makeDate"></td>
 							<td><input type="int" class="odd gradeX" name="requestQuantity"></td>												
 						</tr>
@@ -69,13 +62,13 @@
 
 	<script>
 		$('#btn-add-row').click(function() {
-			$("#request_table > tbody:last").append(
+			$("#tbody").append(
 					"<tr>
-					<td><input type="int" class="odd gradeX" name="req_no"></td>			
-					<td><input type="int" class="odd gradeX" name="partCode"></td>			
-					<td><input type="text" class="odd gradeX" name="process"></td>			
-					<td><input type="int" class="odd gradeX" name="requestQuantity"></td>			
-					<td><input type="int" class="odd gradeX" name="makeDate"></td>			
+						<td><input type="int" class="odd gradeX" name="req_no"></td>			
+						<td><input type="int" class="odd gradeX" name="partCode"></td>			
+						<td><input type="text" class="odd gradeX" name="process"></td>			
+						<td><input type="int" class="odd gradeX" name="requestQuantity"></td>			
+						<td><input type="int" class="odd gradeX" name="makeDate"></td>			
 				</tr>");
 		});
 		$('#btn_delete_row").click(function() {

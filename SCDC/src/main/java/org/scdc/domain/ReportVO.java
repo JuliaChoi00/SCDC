@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class ReportVO {
-		private int partCode;
+		private String partCode;
 		private String partName;
 		private String nickName;
 		private String library;

@@ -4,14 +4,16 @@ import java.util.List;
 
 import org.scdc.domain.ComponentVO;
 import org.scdc.domain.ExportProductVO;
-
+import org.scdc.domain.ExportStateVO;
 import org.scdc.domain.Criteria;
+import org.scdc.domain.ExportListVO;
 import org.scdc.domain.ExportVO;
 import org.scdc.domain.PartVO;
 import org.scdc.domain.ProductVO;
 import org.scdc.domain.ReportVO;
 import org.scdc.domain.RequestPartVO;
 import org.scdc.domain.StockVO;
+import org.scdc.domain.WearhouseVO;
 import org.scdc.mapper.ExportMapper;
 import org.springframework.stereotype.Service;
 
@@ -33,7 +35,7 @@ public class ExportServiceIml implements ExportService {
 
 	//1-1.��Ϻ���
 	@Override
-	public List<Integer> getPartCodeList(){
+	public List<String> getPartCodeList(){
 		log.info("ǰ���ڵ帮��Ʈ");
 		return mapper.getPartCodeList();
 	}
@@ -90,17 +92,6 @@ public class ExportServiceIml implements ExportService {
 
 	////////////////////////////////
 
-	//3. ���  --cf)���, ����, ������ ��� ������ int�̸� ó���� ���� ������ �ݳ��ȴ�. ->insert
-	//3-1. ��� (��ϵ� �۹�ȣ�� �˾ƾ� �ϴ� ���, pk���� �˾ƾ� �ϴ� ���)
-	@Override
-	public void register(ExportVO vo) {
-		mapper.insert(vo);
-	//	mapper.insertSelectKey(vo); //���� partCode �˱�
-		
-	}
-	////////////////////////////////
-
-	//4. ���
 	@Override
 	public boolean modify(StockVO vo) {
 		return (mapper.update(vo)==1);
@@ -183,6 +174,55 @@ public class ExportServiceIml implements ExportService {
 		mapper.requestPart(vo);
 	}
 
+	@Override
+	public List<ExportListVO> getExportPage() {
+		// TODO Auto-generated method stub
+		return mapper.getExportPage();
+	}
+
+	@Override
+	public List<ExportStateVO> getExportState() {
+		// TODO Auto-generated method stub
+		return mapper.getExportState();
+	}
+
+	@Override
+	public ExportStateVO getReqNo(int req_no) {
+		return mapper.getReqNo(req_no);
+	}
+
+	@Override
+	public void registerExport(ExportVO vo) {
+		// TODO Auto-generated method stub
+		mapper.insertExport(vo);
+
+	}
+	
+   @Override
+   public List<WearhouseVO> getInportList() {
+      log.info("입고리스트");
+      return mapper.getInportList();
+   }
+
+   //총  출고량
+   @Override
+   public Integer exportQuantity(String partCode) {
+      // TODO Auto-generated method stub
+      return mapper.getExportQuantity(partCode);
+   }
 		
+   //4. 재고
+   @Override
+   public boolean modifyAfterInport(StockVO vo) {
+      return (mapper.updateAfterInport(vo)==1);
+   }
+   
+   ////////////////////////////////
+   //3. 입고  --cf)등록, 삭제, 수정일 경우 리턴이 int이면 처리된 글의 개수가 반납된다. ->insert
+   @Override
+   public void registerInport(StockVO vo) {
+      mapper.insertInport(vo);
+      
+   }
 
 }

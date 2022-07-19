@@ -1,10 +1,12 @@
 package org.scdc.domain;
 
+import java.util.Date;
+
 import lombok.Data;
 
 @Data
-public class ComponentVO {
+public class WearhouseVO {
+	private int wareQuantity;
 	private String partCode;
-	private int productCode;
-	private int partQuantity;
+
 }

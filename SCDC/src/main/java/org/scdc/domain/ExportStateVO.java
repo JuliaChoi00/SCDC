@@ -5,10 +5,10 @@ import java.util.Date;
 import lombok.Data;
 
 @Data
-public class ExportVO {
-	private int export_no;
+public class ExportStateVO {
+
+	private int req_no;
+	private String makedate;
+	private int confirm;
 	private Date export_date;
-	private int exportQuantity;
-	private String partCode;
-	
 }

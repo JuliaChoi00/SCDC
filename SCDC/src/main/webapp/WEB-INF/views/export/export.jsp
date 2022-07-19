@@ -103,19 +103,19 @@
                                 </thead>
                                 <tbody>
 
-<c:forEach var="part" items="${stock}">                              
-                                    <tr class="odd gradeX">
-                                        <td><c:out value="${part.partCode}"></c:out></td>
-                                        <td><c:out value="${part.stock_date}"></c:out></td>
-                                        <td><c:out value="${part.stockQuantity}"></c:out></td>
-                                     
-                                       <td>
-                                      
-                                        <input class="form-control" placeholder="출고량을 적어주세요" type="number" name="exportQuantity" required>
-                                       </td>
-                                        
-                                    </tr>
- </c:forEach>                                  
+									<c:forEach var="export" items="${stock}">                              
+	                                    <tr class="odd gradeX">
+	                                        <td><c:out value="${export.partCode}"></c:out></td>
+	                                        <td><c:out value="${export.stock_date}"></c:out></td>
+	                                        <td><c:out value="${export.stockQuantity}"></c:out></td>
+	                                     
+	                                       <td>
+	                                      
+	                                        <input class="form-control" placeholder="출고량을 적어주세요" type="number" name="exportQuantity" required>
+	                                       </td>
+	                                        
+	                                    </tr>
+ 									</c:forEach>                                  
                                    </tbody>
                             </table>  
           	                        	

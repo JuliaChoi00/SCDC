@@ -9,8 +9,8 @@ public class RequestPartVO {
 	
 	public int export_no;
 	public int req_no;
-	public int partCode;
-	public String process;
+	public String partCode;
+	public String materialProcess;
 	public int requestQuantity;
 	public String makeDate;
 	

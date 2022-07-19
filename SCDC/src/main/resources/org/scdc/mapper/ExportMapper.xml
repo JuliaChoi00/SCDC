@@ -4,8 +4,50 @@ PUBLIC "//mybatis.org/DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 
 <mapper namespace="org.scdc.mapper.ExportMapper">
+
+<!-- 최초  재고  입고    -->   
+   <insert id="insertInport">
+      insert into tbl_stock(stock_no,stockQuantity,partCode) 
+            values(stock_seq.nextval,#{stockQuantity},#{partCode})
+   </insert>
+
+<!--  4. 입고후  재고 업데이트///////////////////////////////-->
+    
+   <update id ="updateAfterInport">
+      update tbl_stock set stockQuantity=#{stockQuantity}, 
+       stock_date=sysdate where partCode =#{partCode}
+    </update>
+
+
+<!-- 6. 총  출고량   -->
+ <select id="getExportQuantity" resultType="Integer" >
+   
+   <![CDATA[
+	select 
+         sum(exportQuantity) exportQuantity
+         from tbl_export 
+          where partcode=#{partCode}
+	group by  partcode
+      ]]>
+      
+   </select>
+
+<!-- 재고  입고  확인하기   -->   
+   <select id="getInportList" resultType="org.scdc.domain.WearhouseVO" >
+   
+   <![CDATA[
+   select  sum(quantity) wareQuantity,code partCode
+      from  (select w.ware_quantity quantity, c.partcode code
+                  from warehousing w 
+                  JOIN purchase_order o on w.order_num = o.order_num
+                  JOIN tbl_contract c on o.contract_num=c.contractno)
+      group  by  code
+      ]]>
+      
+   </select>
+
 <!-- 재고있는 품목코드 리스트 -->
-	<select id = "getPartCodeList" resultType="Integer">
+	<select id = "getPartCodeList" resultType="String">
 		<!-- > 부호를 xml로 인식하지 말라 -->
 		<![CDATA[
 	select b.partCode
@@ -179,26 +221,44 @@ PUBLIC "//mybatis.org/DTD Mapper 3.0//EN"
 <!--  출고요청하기 -->
 
  	<insert id="requestPart">
- 		insert into tbl_process
- 		values(export_no.nextval,#{req_no},#{partCode},#{process},#{requestQuantity},#{makeDate})
+ 		insert into tbl_process(export_no, req_no, partCode, materialProcess, requestQuantity, makeDate)
+ 		values(export_no.nextval,#{req_no},#{partCode},#{materialProcess},#{requestQuantity},#{makeDate})
  	</insert>
 	
 
 <!--  3. 출고///////////////////////////////-->
+   
+   <insert id="insertExport">
+         insert into tbl_export(export_no,exportQuantity,partCode) 
+            values(export_seq.nextval,#{exportQuantity},#{partCode})
+
+   </insert>
 	
-	<insert id="insert">
-   		insert into tbl_export(export_no,exportQuantity,partCode) 
-   			values(export_seq.nextval,#{exportQuantity},#{partCode})
-
-	</insert>
+<!--  3-1. 출고페이지 목록가져오기///////////////////////////////-->
+	<select id = "getExportPage" resultType="org.scdc.domain.ExportListVO">
+		select a.req_no, a.process, a.partcode, c.stockquantity, a.requestquantity, b.exportquantity
+		from tbl_process a
+		left join tbl_export b on a.export_no=b.export_no
+		left join tbl_stock c on a.partcode=c.partcode
+		where req_no=1
+	</select>
 	
-<!--  3-1. 출고///////////////////////////////-->
-	<insert id = "insertSelectKey">
-		<selectKey>
+	<!-- 해당 요청번호 출고페이지 목록가져오기 -->
+	<select id = "getReqNo" resultType="org.scdc.domain.ExportStateVO">
+		select a.req_no, a.process, a.partcode, c.stockquantity, a.requestquantity, b.exportquantity
+		from tbl_process a
+		left join tbl_export b on a.export_no=b.export_no
+		left join tbl_stock c on a.partcode=c.partcode
+		where req_no=#{req_no}
+		
+	</select>
 
-		</selectKey>
-
-	</insert>
+<!--   출고현황페이지 목록가져오기///////////////////////////////-->
+	<select id = "getExportState" resultType="org.scdc.domain.ExportStateVO">
+		select req_no, makedate, confirm, export_date
+		from tbl_process a
+		left join tbl_export b on a.export_no=b.export_no
+	</select>
 	
 <!--  4. 재고 업데이트///////////////////////////////-->
 	
