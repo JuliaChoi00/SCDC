@@ -120,7 +120,7 @@ class ExportController {
 	
 	@PostMapping("/modify")
 	public String modify(StockVO vo,RedirectAttributes rttr) {
-		log.info("�ۼ��� ��û");
+		log.info("ㅇ");
 		if(service.modify(vo))
 			rttr.addFlashAttribute("state","modify");
 		return "redirect:/export/dashboard";
